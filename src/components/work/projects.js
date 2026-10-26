@@ -20,6 +20,8 @@ export const projects = [
       "Render",
     ],
 
+    mobileImage: "/image/chat-app/chat.png",
+
     images: [
       "/image/chat-app/signup.png",
       "/image/chat-app/chat.png",
@@ -59,6 +61,7 @@ export const projects = [
     live: "https://real-time-chat-rosy-phi.vercel.app/",
 
     accent: "#22C55E",
+    bgTitle: "MESSAGING PLATFORM",
   },
 
   {
@@ -82,6 +85,8 @@ export const projects = [
       "TanStack Query",
       "Tailwind CSS",
     ],
+
+    mobileImage: "/image/interview-platform/session.png",
 
     images: [
       "/image/interview-platform/signup.png",
@@ -123,5 +128,73 @@ export const projects = [
     live: "https://coding-platform-jet-two.vercel.app/",
 
     accent: "#3B82F6",
+    bgTitle: "INTERVIEW PLATFORM",
+  },
+
+  {
+    id: 3,
+
+    title: "MPLADS Risk Monitor",
+
+    subtitle:
+      "AI-powered anomaly detection and risk intelligence platform for MPLADS public fund monitoring.",
+
+    year: "Sep 2026",
+
+    tech: [
+      "React",
+      "FastAPI",
+      "Python",
+      "XGBoost",
+      "Scikit-Learn",
+      "LangGraph",
+      "PostgreSQL",
+      "pgvector",
+      "Leaflet",
+      "Tailwind CSS",
+    ],
+
+    mobileImage: "/image/mplad-risk-monitor/home_page.png",
+
+    images: [
+      "/image/mplad-risk-monitor/home_page.png",
+      "/image/mplad-risk-monitor/dm_dashboard.png",
+      "/image/mplad-risk-monitor/mp_dashboard.png",
+      "/image/mplad-risk-monitor/login.png",
+    ],
+
+    description:
+      "An end-to-end governance and risk monitoring platform designed to identify fund allocation anomalies, execution delays, and contractor monopolies in Members of Parliament Local Area Development Scheme (MPLADS) projects.",
+
+    highlights: [
+      "Machine learning risk scoring pipeline utilizing XGBoost, Scikit-Learn, and SHAP interpretability.",
+      "Self-RAG conversational AI with LangGraph, PostgreSQL pgvector hybrid search, and BGE reranking.",
+      "Interactive constituency risk mapping and geospatial analytics powered by Leaflet and React.",
+      "FastAPI backend with Supabase database integration and document parsing pipelines.",
+      "Automated anomaly detection for budget overruns, repeat contractors, and timeline lags.",
+      "Responsive data dashboard built with React, Vite, and Tailwind CSS.",
+    ],
+
+    challenges: [
+      {
+        title: "Anomaly Detection",
+        text: "Trained predictive ML models with XGBoost and Optuna hyperparameter tuning to accurately flag high-risk public infrastructure projects.",
+      },
+      {
+        title: "Domain Intelligence with Self-RAG",
+        text: "Engineered a hybrid semantic retrieval pipeline combining pgvector, keyword tsvector search, and cross-encoder reranking for government scheme guidelines.",
+      },
+      {
+        title: "Geospatial Visualization",
+        text: "Built interactive maps and multi-dimensional risk dashboards to visualize constituency-level fund allocation and contractor patterns.",
+      },
+    ],
+
+    github: "https://github.com/EvilLucifer00/MPLAD-Risk-Monitor",
+
+    live: "https://mplad-risk-monitor.vercel.app/",
+
+    accent: "#EAB308",
+    bgTitle: "RISK MONITOR",
   },
 ];

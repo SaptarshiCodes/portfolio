@@ -18,8 +18,10 @@ const ProjectStack = forwardRef(({ project, active = false }, ref) => {
     <img
       key={index}
       src={image}
-      alt={`${project.title} ${index + 1}`}
-      className="w-full h-full object-contain pointer-events-none select-none"
+      alt={`${project.title} screenshot ${index + 1}`}
+      loading="lazy"
+      decoding="async"
+      className="w-full h-full object-contain pointer-events-none select-none rounded-xl"
       draggable={false}
     />
   ));
@@ -34,17 +36,17 @@ const ProjectStack = forwardRef(({ project, active = false }, ref) => {
         {/* Background Title */}
         <div className="absolute inset-0 flex items-center justify-center-safe pointer-events-none select-none z-0">
           <h1
-            className="text-[15vw] font-black uppercase text-white/3 leading-relaxed"
+            className="text-[12vw] font-black uppercase text-white/3 leading-relaxed text-center"
             style={{
               textShadow: "0 0 10px rgba(255,255,255,0.20)",
             }}
           >
-            {project.id === 1 ? "message Platform" : "INTERVIEW PLATFORM"}
+            {project.bgTitle || project.title}
           </h1>
         </div>
 
         {/* Stack */}
-        <div className="relative z-10 w-full h-full grayscale-25 brightness-105 contrast-110">
+        <div className="relative z-10 w-full h-full">
           <Stack
             ref={stackRef}
             cards={cards}

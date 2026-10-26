@@ -101,6 +101,7 @@ const Stack = forwardRef(
     });
 
     useEffect(() => {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setStack(
         cards.map((content, index) => ({
           id: index + 1,
@@ -168,7 +169,7 @@ const Stack = forwardRef(
       >
         {stack.map((card, index) => {
           const randomRotate = randomRotation
-            ? Math.random() * 10 - 5
+            ? ((card.id * 17) % 10) - 5
             : 0;
 
           return (

@@ -16,34 +16,41 @@ const SelectedWorks = () => {
 
   useGSAP(
     () => {
-      ScrollTrigger.create({
-        trigger: pinRef.current,
-        start: "center center",
-        endTrigger: sectionRef.current,
-        end: "bottom-=80 bottom",
-        pin: true,
-        pinSpacing: false,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-      });
+      const mm = gsap.matchMedia();
 
-      const projectCards = gsap.utils.toArray("[data-project-card]");
-
-      projectCards.forEach((card, index) => {
+      // Pinned side-by-side gallery only on desktop viewports (>= 1024px)
+      mm.add("(min-width: 1024px)", () => {
         ScrollTrigger.create({
-          trigger: card,
-          start: "top center",
-          end: "bottom center",
+          trigger: pinRef.current,
+          start: "center center",
+          endTrigger: sectionRef.current,
+          end: "bottom-=80 bottom",
+          pin: true,
+          pinSpacing: false,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        });
 
-          onEnter: () => {
-            galleryRef.current?.showProject(index);
-          },
+        const projectCards = gsap.utils.toArray("[data-project-card]");
 
-          onEnterBack: () => {
-            galleryRef.current?.showProject(index);
-          },
+        projectCards.forEach((card, index) => {
+          ScrollTrigger.create({
+            trigger: card,
+            start: "top center",
+            end: "bottom center",
+
+            onEnter: () => {
+              galleryRef.current?.showProject(index);
+            },
+
+            onEnterBack: () => {
+              galleryRef.current?.showProject(index);
+            },
+          });
         });
       });
+
+      return () => mm.revert();
     },
     { scope: sectionRef },
   );
@@ -51,26 +58,29 @@ const SelectedWorks = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden pt-[3vw] px-[1vw]"
+      className="relative w-full overflow-hidden pt-6 sm:pt-10 lg:pt-[3vw] px-4 sm:px-6 lg:px-[1vw]"
+      aria-label="Selected Works"
     >
-      <h1 data-scroll-reveal className="text-zinc-200 text-[3.5vw] font-[font2] font-bold tracking-wide">
+      <h2 data-scroll-reveal className="text-zinc-100 text-3xl sm:text-4xl lg:text-[3.5vw] font-[font2] font-bold tracking-wide">
         Selected Works
-      </h1>
+      </h2>
 
-      <div data-scroll-reveal className="my-[1.5vw] flex justify-between">
-        <p className="text-zinc-400 font-[font1] font-light text-[1.2vw]">
+      <div data-scroll-reveal className="my-4 lg:my-[1.5vw] flex justify-between items-end">
+        <p className="text-zinc-400 font-[font1] font-light text-sm sm:text-base lg:text-[1.2vw] leading-relaxed">
           A collection of projects that define my journey
-          <br />
-          in digital product creation.
+          <br className="hidden sm:inline" /> in digital product creation.
         </p>
 
-        <h2 className="text-zinc-400 font-[font2] text-[1.5vw]">(02)</h2>
+        <span className="text-zinc-400 font-[font2] text-sm sm:text-base lg:text-[1.5vw] tabular-nums">
+          (0{projects.length})
+        </span>
       </div>
 
       <div className="w-full h-px bg-zinc-800" />
 
-      <div className="flex justify-between items-start">
-        <div className="w-[52%]">
+      <div className="flex flex-col lg:flex-row justify-between items-start">
+        {/* Desktop pinned gallery (hidden on mobile/tablet to avoid overflow) */}
+        <div className="hidden lg:block lg:w-[52%]">
           <div
             ref={pinRef}
             className="h-screen flex justify-center items-center"
@@ -79,7 +89,8 @@ const SelectedWorks = () => {
           </div>
         </div>
 
-        <div className="w-[42%]">
+        {/* Project cards: full width on mobile, 42% on desktop */}
+        <div className="w-full lg:w-[42%]">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}

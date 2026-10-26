@@ -7,8 +7,17 @@ const Cursor = () => {
   const ringRef = useRef(null);
 
   useGSAP(() => {
+    // Only activate custom cursor on desktop devices with a fine pointer (mouse)
+    if (
+      typeof window === "undefined" ||
+      !window.matchMedia("(pointer: fine) and (min-width: 768px)").matches
+    ) {
+      return;
+    }
+
     const cursor = cursorRef.current;
     const ring = ringRef.current;
+    if (!cursor || !ring) return;
 
     gsap.set([cursor, ring], {
       xPercent: -50,
@@ -64,7 +73,7 @@ const Cursor = () => {
     document.addEventListener("mouseenter", enterWindow);
     document.addEventListener("mouseleave", leaveWindow);
 
-    // Hide system cursor everywhere
+    // Hide system cursor on desktop
     document.body.style.cursor = "none";
 
     const handleMouseOver = (e) => {
@@ -109,6 +118,8 @@ const Cursor = () => {
       <div
         ref={ringRef}
         className="
+          hidden
+          md:block
           fixed
           top-0
           left-0
@@ -126,6 +137,8 @@ const Cursor = () => {
       <div
         ref={cursorRef}
         className="
+          hidden
+          md:block
           fixed
           top-0
           left-0

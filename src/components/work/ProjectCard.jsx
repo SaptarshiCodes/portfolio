@@ -2,35 +2,124 @@ import { FaGithub, FaArrowRight } from "react-icons/fa";
 
 const ProjectCard = ({ project, index }) => {
   return (
-    <section
+    <article
       id={`project-${index}`}
       data-project-card
-      className="min-h-screen flex items-center py-[6vw]"
+      className="min-h-0 lg:min-h-screen flex items-center py-8 lg:py-[6vw]"
+      aria-label={`Project: ${project.title}`}
     >
       <div className="relative w-full">
         {/* Project Number */}
-        <h1 data-scroll-reveal className="absolute right-[-1vw] top-[-1.5vw] text-[9vw] font-black text-zinc-700 leading-none pointer-events-none select-none">
+        <span
+          data-scroll-reveal
+          aria-hidden="true"
+          className="absolute right-0 top-[-1.5rem] lg:right-[-1vw] lg:top-[-1.5vw] text-5xl sm:text-7xl lg:text-[9vw] font-black text-zinc-800 lg:text-zinc-700 leading-none pointer-events-none select-none"
+        >
           0{index + 1}
-        </h1>
+        </span>
 
         {/* Year */}
-        <p data-scroll-reveal className="uppercase tracking-[0.35vw] text-zinc-300 text-[0.8vw] mb-[1vw]">
+        <p
+          data-scroll-reveal
+          className="uppercase tracking-widest text-zinc-400 text-xs sm:text-sm lg:text-[0.8vw] mb-2 lg:mb-[1vw]"
+        >
           {project.year}
         </p>
 
         {/* Title */}
-        <h2 data-scroll-reveal className="font-[font2] text-zinc-200 text-[3.5vw] leading-[3.5vw] max-w-[70%]">
+        <h2
+          data-scroll-reveal
+          className="font-[font2] text-zinc-100 text-2xl sm:text-3xl lg:text-[3.5vw] lg:leading-[3.5vw] max-w-full lg:max-w-[75%] font-bold"
+        >
           {project.title}
         </h2>
 
-        {/* Subtitle */}
-        <p data-scroll-reveal className="mt-[2vw] text-zinc-300 text-[1vw] leading-[1.9vw] max-w-[75%]">
+        {/* Mobile Image Preview (< lg screens) wrapped in a browser-like frame */}
+        {(() => {
+          const mobileImg =
+            project.mobileImage || (project.images && project.images[0]);
+          if (!mobileImg) return null;
+
+          const displayUrl = project.live
+            ? project.live.replace(/^https?:\/\//, "").replace(/\/$/, "")
+            : `${project.title.toLowerCase().replace(/[^a-z0-9]/g, "-")}.app`;
+
+          return (
+            <div
+              data-scroll-reveal
+              className="block lg:hidden my-6 w-full rounded-2xl overflow-hidden border border-zinc-700/70 bg-zinc-900/90 shadow-[0_12px_40px_rgba(0,0,0,0.6)]"
+            >
+              {/* Browser Header Bar */}
+              <div className="flex items-center justify-between px-3.5 py-2.5 bg-zinc-800/90 border-b border-zinc-700/50 select-none">
+                {/* Traffic Light Window Controls */}
+                <div className="flex items-center gap-1.5" aria-hidden="true">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block shadow-sm" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block shadow-sm" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block shadow-sm" />
+                </div>
+
+                {/* Address Bar */}
+                <div className="flex-1 mx-2 flex items-center justify-center">
+                  <div className="w-full max-w-[210px] h-5 rounded-md bg-zinc-900/95 border border-zinc-700/50 flex items-center justify-center px-2 gap-1.5">
+                    <svg
+                      className="w-2.5 h-2.5 text-zinc-400 shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2.2}
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                      />
+                    </svg>
+                    <span className="text-[10px] text-zinc-300 font-mono tracking-tight truncate">
+                      {displayUrl}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Subtle right-side window indicator dots */}
+                <div
+                  className="flex items-center gap-1 opacity-40"
+                  aria-hidden="true"
+                >
+                  <span className="w-1 h-1 rounded-full bg-zinc-300" />
+                  <span className="w-1 h-1 rounded-full bg-zinc-300" />
+                  <span className="w-1 h-1 rounded-full bg-zinc-300" />
+                </div>
+              </div>
+
+              {/* Browser Content Area (Image with no filters, retaining full original uncropped size) */}
+              <div className="relative w-full bg-zinc-950 overflow-hidden">
+                <img
+                  src={mobileImg}
+                  alt={`${project.title} interface preview`}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto block"
+                />
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Description */}
+        <p
+          data-scroll-reveal
+          className="mt-4 lg:mt-[2vw] text-zinc-300 text-sm sm:text-base lg:text-[1vw] leading-relaxed lg:leading-[1.9vw] max-w-full lg:max-w-[85%]"
+        >
           {project.description}
         </p>
 
         {/* Tech Stack */}
-
-        <div data-scroll-reveal className="flex flex-wrap gap-[0.8vw] mt-[2vw]">
+        <div
+          data-scroll-reveal
+          className="flex flex-wrap gap-2 lg:gap-[0.8vw] mt-4 lg:mt-[2vw]"
+          aria-label="Technologies used"
+        >
           {project.tech.map((tech) => (
             <span
               key={tech}
@@ -38,17 +127,20 @@ const ProjectCard = ({ project, index }) => {
                 rounded-full
                 border
                 text-zinc-300
-                border-zinc-300
-                px-[1vw]
-                py-[0.45vw]
-                text-[0.8vw]
+                border-zinc-700
+                px-3
+                py-1
+                lg:px-[1vw]
+                lg:py-[0.45vw]
+                text-xs
+                lg:text-[0.8vw]
                 uppercase
                 tracking-wide
                 transition-all
                 duration-300
-                hover:bg-black
+                hover:bg-zinc-100
                 hover:border-zinc-100
-                hover:text-zinc-100
+                hover:text-black
               "
             >
               {tech}
@@ -57,51 +149,63 @@ const ProjectCard = ({ project, index }) => {
         </div>
 
         {/* Highlights */}
-
-        <div data-scroll-reveal className="mt-[2vw] space-y-[0.5vw]">
+        <div
+          data-scroll-reveal
+          className="mt-6 lg:mt-[2vw] space-y-2 lg:space-y-[0.5vw]"
+        >
           {project.highlights.slice(0, 4).map((item, i) => (
-            <div key={i} className="flex items-center gap-[1vw]">
+            <div key={i} className="flex items-start gap-3 lg:gap-[1vw]">
               <div
-                className="h-[0.45vw] w-[0.45vw] rounded-full"
+                className="h-2 w-2 lg:h-[0.45vw] lg:w-[0.45vw] rounded-full mt-2 lg:mt-[0.4vw] flex-shrink-0"
                 style={{
-                  background: project.accent,
+                  background: project.accent || "#22C55E",
                 }}
+                aria-hidden="true"
               />
-
-              <p className="text-zinc-300 text-[0.95vw]">{item}</p>
+              <p className="text-zinc-300 text-xs sm:text-sm lg:text-[0.95vw] leading-normal">
+                {item}
+              </p>
             </div>
           ))}
         </div>
 
         {/* Divider */}
-
-        <div className="h-px bg-zinc-800 my-[2vw]" />
+        <div className="h-px bg-zinc-800 my-6 lg:my-[2vw]" />
 
         {/* Links */}
-
-        <div data-scroll-reveal className="flex gap-[5vw]">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noreferrer"
-            className="group flex items-center gap-[0.8vw] text-[1.2vw] text-zinc-300 hover:text-zinc-100 transition-colors font-medium"
-          >
-            <FaGithub />
-            GitHub
-          </a>
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noreferrer"
-            className="group flex items-center text-zinc-300 gap-[0.8vw] text-[1.2vw] font-medium hover:text-zinc-100"
-          >
-            Explore Project
-            <FaArrowRight className="transition-transform duration-300 size-4 group-hover:translate-x-1 group-hover:text-zinc-100" />
-          </a>
+        <div
+          data-scroll-reveal
+          className="flex flex-wrap items-center gap-6 sm:gap-10 lg:gap-[5vw]"
+        >
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${project.title} source code on GitHub`}
+              className="group flex items-center gap-2 lg:gap-[0.8vw] text-sm sm:text-base lg:text-[1.2vw] text-zinc-300 hover:text-white transition-colors font-medium focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none rounded"
+            >
+              <FaGithub className="text-lg lg:text-xl" />
+              <span>GitHub</span>
+            </a>
+          )}
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open live demo for ${project.title}`}
+              className="group flex items-center gap-2 lg:gap-[0.8vw] text-sm sm:text-base lg:text-[1.2vw] text-zinc-300 hover:text-white transition-colors font-medium focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none rounded"
+            >
+              <span>Explore Project</span>
+              <FaArrowRight className="transition-transform duration-300 size-3.5 lg:size-4 group-hover:translate-x-1" />
+            </a>
+          )}
         </div>
-        <div className="h-px bg-zinc-800 my-[2vw]" />
+
+        <div className="h-px bg-zinc-800 my-6 lg:my-[2vw]" />
       </div>
-    </section>
+    </article>
   );
 };
 

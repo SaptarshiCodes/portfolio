@@ -3,35 +3,85 @@
 @font-face {
   font-family: font1;
   src: url("/fonts/font1.woff2") format("woff2");
+  font-display: swap;
 }
 
 @font-face {
   font-family: font2;
   src: url("/fonts/font2.woff2") format("woff2");
+  font-display: swap;
 }
 
 html, body {
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   background-color: hsl(0, 0%, 3%);
-  cursor: none;
-  scroll-behavior: smooth;
+  color: hsl(0, 0%, 93%);
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
 }
 
+/* Mobile-native: disable tap delay and prevent accidental selection on interactive controls */
+button, a, [role="button"] {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
 
-/* @keyframes marquee {
-  from {
-    transform: translateX(0%);
+/* Prevent iOS Safari auto-zoom on input focus */
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* Custom cursor only active on desktop devices with fine pointer (mouse) */
+@media (pointer: fine) {
+  html, body {
+    cursor: none;
   }
-  to {
-    transform: translateX(-50%);
+}
+
+/* Accessible focus ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 3px;
+}
+
+/* WCAG: Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-.animate-marquee {
-  animation: marquee 20s linear infinite;
+/* Technologies I work with - brand icons */
+.skill-tech-icon {
+  color: var(--brand-color);
+  transition: color 0.3s ease;
 }
 
-.animate-marquee:hover {
-  animation-duration: 70s;
-} */
+@media (min-width: 1024px) and (hover: hover) {
+  .skill-tech-icon {
+    color: #71717a; /* zinc-500 default on desktop */
+  }
+  .group:hover .skill-tech-icon {
+    color: var(--brand-color) !important;
+  }
+}
+
+
+/* Hide native scrollbar for horizontal reels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

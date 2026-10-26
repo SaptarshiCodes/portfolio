@@ -19,32 +19,37 @@ const App = () => {
   useEffect(() => {
     if (loading) return;
 
-    // Small delay to ensure all DOM elements are mounted
+    let ctx;
     const timer = setTimeout(() => {
-      const elements = gsap.utils.toArray("[data-scroll-reveal]");
+      ctx = gsap.context(() => {
+        const elements = gsap.utils.toArray("[data-scroll-reveal]");
 
-      elements.forEach((el) => {
-        gsap.set(el, { opacity: 0, y: 40 });
+        elements.forEach((el) => {
+          gsap.set(el, { opacity: 0, y: 32 });
 
-        ScrollTrigger.create({
-          trigger: el,
-          start: "top 90%",
-          once: true,
-          onEnter: () => {
-            gsap.to(el, {
-              opacity: 1,
-              y: 0,
-              duration: 1.0,
-              ease: "power2.out",
-            });
-          },
+          ScrollTrigger.create({
+            trigger: el,
+            start: "top 92%",
+            once: true,
+            onEnter: () => {
+              gsap.to(el, {
+                opacity: 1,
+                y: 0,
+                duration: 0.85,
+                ease: "power2.out",
+              });
+            },
+          });
         });
+
+        ScrollTrigger.refresh();
       });
+    }, 120);
 
-      ScrollTrigger.refresh();
-    }, 100);
-
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      if (ctx) ctx.revert();
+    };
   }, [loading]);
 
   return (

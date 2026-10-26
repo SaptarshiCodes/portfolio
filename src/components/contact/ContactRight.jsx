@@ -1,56 +1,59 @@
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
+import { FiArrowUpRight } from "react-icons/fi";
 
-const contacts = [
+export const contactMethods = [
   {
-    icon: <FaPhoneAlt />,
-    href: "tel:+919876543210",
-    text: "+91-93324 04436",
+    icon: <IoMail aria-hidden="true" />,
+    href: "mailto:mannasaptarshi1@gmail.com",
+    text: "mannasaptarshi1@gmail.com",
+    label: "Email address",
+    title: "Email Me",
   },
   {
-    icon: <IoMail />,
-    href: "mailto:your@email.com",
-    text: "mannasaptarshi1@gmail.com"
+    icon: <FaPhoneAlt aria-hidden="true" />,
+    href: "tel:+919332404436",
+    text: "+91-93324 04436",
+    label: "Phone number",
+    title: "Call / WhatsApp",
   },
 ];
 
 const ContactRight = () => {
   return (
-    <div className="text-zinc-400 text-right">
-      <div data-scroll-reveal className="text-[7vw] leading-none font-[font2] font-medium">
-        <h1 className="text-zinc-200">Let's Work</h1>
-        <h1 className="text-zinc-500">Together</h1>
-      </div>
-      <p data-scroll-reveal className="text-[1.3vw] my-[2vw] tracking-wide">
-        Currently available for freelance projects and <br />
-        open to full-time opportunities.
-      </p>
+    <div className="w-full space-y-3 lg:space-y-[1vw]">
+      {contactMethods.map((item, index) => (
+        <a
+          key={index}
+          href={item.href}
+          aria-label={`${item.label}: ${item.text}`}
+          className="group relative flex items-center justify-between w-full p-4 lg:p-[1.4vw] rounded-2xl bg-[hsl(0,0%,7%)] border border-zinc-800/80 hover:border-zinc-700 hover:bg-zinc-900/90 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] active:scale-[0.98] transition-all duration-300"
+        >
+          <div className="flex items-center gap-3.5 lg:gap-[1.1vw]">
+            <div className="w-10 h-10 lg:w-[3.2vw] lg:h-[3.2vw] rounded-xl bg-zinc-800/80 border border-zinc-700/60 flex items-center justify-center text-zinc-300 group-hover:text-white group-hover:bg-zinc-700/90 transition-colors">
+              <span className="text-base lg:text-[1.3vw]">{item.icon}</span>
+            </div>
+            <div>
+              <span className="block text-[10px] lg:text-[0.75vw] uppercase font-mono tracking-wider text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                {item.title}
+              </span>
+              <span className="text-sm sm:text-base lg:text-[1.15vw] font-medium text-zinc-200 group-hover:text-white transition-colors">
+                {item.text}
+              </span>
+            </div>
+          </div>
+          <FiArrowUpRight className="text-zinc-500 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-lg lg:text-[1.3vw] shrink-0 ml-2" />
+        </a>
+      ))}
 
-      <div data-scroll-reveal className="flex flex-col gap-[1vw] items-end mt-[2vw]">
-        {contacts.map((items, index) => (
-          <a
-            key={index}
-            href={items.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center text-center gap-[1vw] text-zinc-100 leading-none font-[font1]"
-          >
-            <span className="scale-125">{items.icon}</span>
-            <h1 className="text-[1.2vw] font-light tracking-wide">
-              {items.text}
-            </h1>
-          </a>
-        ))}
-      </div>
-      <div data-scroll-reveal className="flex items-center gap-[1vw] justify-end mt-[1.2vw] text-zinc-100 font-[font1] leading-none">
-        <FaLocationDot className="scale-125" />
-        <p className="text-[1.2vw] font-light tarcking-wide">
-          West Bengal, India
-        </p>
+      {/* Location Badge */}
+      <div className="flex items-center gap-2.5 p-3.5 lg:p-[1.1vw] rounded-xl bg-zinc-900/30 border border-zinc-800/50 text-zinc-400 text-xs sm:text-sm lg:text-[0.95vw] font-[font1]">
+        <FaLocationDot className="text-zinc-500 shrink-0 text-sm lg:text-[1vw]" aria-hidden="true" />
+        <span>Based in West Bengal, India &bull; Available worldwide</span>
       </div>
     </div>
   );
-}
+};
 
-export default ContactRight
+export default ContactRight;

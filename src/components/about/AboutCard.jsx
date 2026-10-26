@@ -1,3 +1,4 @@
+import { useState, useRef } from "react";
 import {
   Lightbulb,
   GraduationCap,
@@ -6,76 +7,240 @@ import {
   Compass,
   Rocket,
 } from "lucide-react";
-
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import Magnet from "../Magnet.jsx";
 
 const cardData = [
   {
-    color: "hsl(0,0%,10%)",
     icon: Lightbulb,
     title: "Insight",
+    label: "Who I Am",
     description:
       "Creative problem solver passionate about crafting interactive, performant, and visually engaging digital experiences.",
-    label: "Who I Am",
+    badges: ["Full-Stack", "Creative Dev", "UI Engineering"],
   },
   {
-    color: "hsl(0,0%,10%)",
     icon: GraduationCap,
     title: "Education",
+    label: "Academic",
     description:
       "B.E. Information Technology student at Jadavpur University with a strong foundation in software engineering.",
-    label: "Academic",
+    badges: ["Jadavpur University", "B.E. IT", "2023 - 2027"],
   },
   {
-    color: "hsl(0,0%,10%)",
     icon: Code2,
     title: "Work Focus",
+    label: "Development",
     description:
       "Building scalable full-stack applications using React, Node.js, Express, MongoDB and modern frontend tools.",
-    label: "Development",
+    badges: ["React", "Node.js", "Express", "MongoDB"],
   },
   {
-    color: "hsl(0,0%,10%)",
     icon: Trophy,
     title: "Achievements",
-    description:
-      "Solved 200+ coding problems, Codeforces Pupil journey, WBJEE Rank 505 and consistent project building.",
     label: "Milestones",
+    description:
+      "Consistent problem solver and engineering milestones across platforms and competitive examinations.",
+    badges: ["200+ Solved", "WBJEE Rank 505", "Codeforces Pupil"],
   },
   {
-    color: "hsl(0,0%,10%)",
     icon: Compass,
     title: "Philosophy",
+    label: "Mindset",
     description:
       "Learning by building. Every project is an opportunity to master engineering, creativity and clean architecture.",
-    label: "Mindset",
+    badges: ["Clean Architecture", "Ship Early", "Iterate"],
   },
   {
-    color: "hsl(0,0%,10%)",
     icon: Rocket,
     title: "Interests",
+    label: "Beyond Code",
     description:
       "Creative development, GSAP animations, UI/UX, open source, competitive programming and emerging web technologies.",
-    label: "Beyond Code",
+    badges: ["GSAP Motion", "UI/UX", "Open Source", "Algorithms"],
   },
 ];
 
 export default function MainGrid() {
+  const scrollRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const container = scrollRef.current;
+    const scrollLeft = container.scrollLeft;
+    // Calculate which card is closest to center
+    const card = container.children[0];
+    if (!card) return;
+    const cardWidth = card.offsetWidth + 14; // width + gap (gap-3.5 is 14px)
+    const newIndex = Math.round(scrollLeft / cardWidth);
+    if (newIndex >= 0 && newIndex < cardData.length && newIndex !== activeIndex) {
+      setActiveIndex(newIndex);
+    }
+  };
+
+  const scrollTo = (index) => {
+    if (!scrollRef.current) return;
+    const targetIndex = Math.max(0, Math.min(index, cardData.length - 1));
+    const container = scrollRef.current;
+    const cards = container.children;
+    if (cards[targetIndex]) {
+      cards[targetIndex].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+      setActiveIndex(targetIndex);
+    }
+  };
+
   return (
-    <section className="w-full pt-[5vw] px-[5vw]">
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    <div className="w-full pt-4 sm:pt-8 lg:pt-[4vw] px-0 sm:px-4 lg:px-[5vw]">
+      {/* Mobile Horizontal Snap Reel (under md) */}
+      <div className="block md:hidden">
+        {/* Header with counter & interactive swipe buttons */}
+        <div className="flex items-center justify-between mb-3.5 px-0.5">
+          <div className="flex items-center gap-2">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full">
+              {String(activeIndex + 1).padStart(2, "0")} / {String(cardData.length).padStart(2, "0")}
+            </span>
+            <span className="text-zinc-600">•</span>
+            <span className="text-xs font-medium text-zinc-300 font-[font2]">
+              {cardData[activeIndex].title}
+            </span>
+          </div>
+
+          {/* Prev / Next Buttons */}
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => scrollTo(activeIndex - 1)}
+              disabled={activeIndex === 0}
+              aria-label="Previous aspect"
+              className="w-8 h-8 rounded-full bg-zinc-900/90 border border-zinc-800 flex items-center justify-center text-zinc-300 disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-all"
+            >
+              <FiArrowLeft size={14} />
+            </button>
+            <button
+              onClick={() => scrollTo(activeIndex + 1)}
+              disabled={activeIndex === cardData.length - 1}
+              aria-label="Next aspect"
+              className="w-8 h-8 rounded-full bg-zinc-900/90 border border-zinc-800 flex items-center justify-center text-zinc-300 disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-all"
+            >
+              <FiArrowRight size={14} />
+            </button>
+          </div>
+        </div>
+
+        {/* Swipeable Track */}
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex gap-3.5 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-2 pt-0.5 px-0.5 overscroll-x-contain"
+          style={{
+            WebkitOverflowScrolling: "touch",
+            touchAction: "pan-y",
+          }}
+        >
+          {cardData.map((card, idx) => {
+            const Icon = card.icon;
+            const isCurrent = idx === activeIndex;
+
+            return (
+              <div
+                key={card.title}
+                onClick={() => scrollTo(idx)}
+                className={`
+                  shrink-0
+                  w-[84vw]
+                  max-w-[325px]
+                  snap-center
+                  flex
+                  flex-col
+                  justify-between
+                  rounded-3xl
+                  border
+                  p-5
+                  min-h-[280px]
+                  transition-all
+                  duration-300
+                  select-none
+                  ${
+                    isCurrent
+                      ? "bg-[hsl(0,0%,10%)] border-zinc-700 shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
+                      : "bg-[hsl(0,0%,8%)] border-zinc-800/80 opacity-75"
+                  }
+                `}
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="uppercase tracking-[0.2em] text-[11px] text-zinc-400 font-mono">
+                      {card.label}
+                    </span>
+
+                    <div
+                      className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-800/90 border border-zinc-700/80"
+                      aria-hidden="true"
+                    >
+                      <Icon size={20} className="text-zinc-200" />
+                    </div>
+                  </div>
+
+                  <h3 className="mt-3.5 text-2xl font-semibold text-white font-[font2]">
+                    {card.title}
+                  </h3>
+
+                  <p className="mt-2.5 text-zinc-300 leading-relaxed text-xs">
+                    {card.description}
+                  </p>
+                </div>
+
+                {/* Badges / Micro-chips */}
+                <div className="mt-4 pt-3.5 border-t border-zinc-800/80 flex flex-wrap gap-1.5">
+                  {card.badges.map((badge, bIdx) => (
+                    <span
+                      key={bIdx}
+                      className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-zinc-900/90 border border-zinc-800 text-zinc-300"
+                    >
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Pagination Progress Dots */}
+        <div className="flex justify-center items-center gap-1.5 mt-3.5">
+          {cardData.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === activeIndex
+                  ? "w-6 bg-white"
+                  : "w-1.5 bg-zinc-700 hover:bg-zinc-500"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop Grid Layout (md and up) */}
+      <div className="hidden md:grid md:grid-cols-2 xl:grid-cols-3 gap-6">
         {cardData.map((card) => {
           const Icon = card.icon;
 
           return (
             <Magnet key={card.title} strength={0.02} padding={10}>
               <div
-                key={card.title}
                 data-scroll-reveal
                 className="
                 group
                 flex
                 flex-col
+                justify-between
                 relative
                 h-full
                 w-full
@@ -83,42 +248,60 @@ export default function MainGrid() {
                 border
                 border-zinc-800
                 bg-[hsl(0,0%,10%)]
-                p-7
-                min-h-60
+                p-6 sm:p-7
+                min-h-64
                 overflow-hidden
-                hover:shadow-[0_0_40px_rgba(161,161,170,0.25)]
+                hover:border-zinc-700
+                hover:shadow-[0_0_40px_rgba(161,161,170,0.15)]
                 transition-all
                 duration-300
                 select-none
               "
               >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl border border-zinc-400/40 pointer-events-none" />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl border border-zinc-400/30 pointer-events-none" />
 
-                <div className="flex items-center justify-between">
-                  <span className="uppercase tracking-[0.25em] text-xs text-zinc-400">
-                    {card.label}
-                  </span>
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="uppercase tracking-[0.25em] text-xs text-zinc-400 font-medium font-mono">
+                      {card.label}
+                    </span>
 
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-800 border border-zinc-700">
-                    <Icon
-                      size={24}
-                      className="text-zinc-500 group-hover:text-white hover:scale-110 transition-colors duration-300"
-                    />
+                    <div
+                      className="flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-800/90 border border-zinc-700/80"
+                      aria-hidden="true"
+                    >
+                      <Icon
+                        size={22}
+                        className="text-zinc-300 group-hover:text-white group-hover:scale-110 transition-all duration-300"
+                      />
+                    </div>
                   </div>
+
+                  <h3 className="mt-4 text-2xl sm:text-3xl font-semibold text-white font-[font2]">
+                    {card.title}
+                  </h3>
+
+                  <p className="mt-3 text-zinc-300 leading-relaxed text-sm sm:text-base">
+                    {card.description}
+                  </p>
                 </div>
 
-                <h3 className="mt-5 text-3xl font-semibold text-white font-[font2]">
-                  {card.title}
-                </h3>
-
-                <p className="mt-4 text-zinc-400 leading-7">
-                  {card.description}
-                </p>
+                {/* Badges / Micro-chips */}
+                <div className="mt-5 pt-4 border-t border-zinc-800/80 flex flex-wrap gap-2">
+                  {card.badges.map((badge, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs font-mono px-2.5 py-1 rounded-md bg-zinc-900/90 border border-zinc-800 text-zinc-300 group-hover:border-zinc-700 transition-colors"
+                    >
+                      {badge}
+                    </span>
+                  ))}
+                </div>
               </div>
             </Magnet>
           );
         })}
       </div>
-    </section>
+    </div>
   );
 }
