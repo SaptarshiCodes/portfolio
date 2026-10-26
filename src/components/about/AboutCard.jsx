@@ -116,7 +116,7 @@ export default function MainGrid() {
               onClick={() => scrollTo(activeIndex - 1)}
               disabled={activeIndex === 0}
               aria-label="Previous aspect"
-              className="w-8 h-8 rounded-full bg-zinc-800/90 border border-zinc-700 flex items-center justify-center text-zinc-200 disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-all"
+              className="relative w-8 h-8 rounded-full bg-zinc-800/90 border border-zinc-700 flex items-center justify-center text-zinc-200 disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-all before:absolute before:-inset-2 before:content-['']"
             >
               <FiArrowLeft size={14} />
             </button>
@@ -124,7 +124,7 @@ export default function MainGrid() {
               onClick={() => scrollTo(activeIndex + 1)}
               disabled={activeIndex === cardData.length - 1}
               aria-label="Next aspect"
-              className="w-8 h-8 rounded-full bg-zinc-800/90 border border-zinc-700 flex items-center justify-center text-zinc-200 disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-all"
+              className="relative w-8 h-8 rounded-full bg-zinc-800/90 border border-zinc-700 flex items-center justify-center text-zinc-200 disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-all before:absolute before:-inset-2 before:content-['']"
             >
               <FiArrowRight size={14} />
             </button>
@@ -210,19 +210,23 @@ export default function MainGrid() {
           })}
         </div>
 
-        {/* Pagination Progress Dots */}
-        <div className="flex justify-center items-center gap-1.5 mt-3.5">
+        {/* Pagination Progress Dots with 44px Accessible Touch Targets */}
+        <div className="flex justify-center items-center gap-0.5 mt-2">
           {cardData.map((_, i) => (
             <button
               key={i}
               onClick={() => scrollTo(i)}
               aria-label={`Go to slide ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === activeIndex
-                  ? "w-6 bg-white"
-                  : "w-1.5 bg-zinc-500 hover:bg-zinc-300"
-              }`}
-            />
+              className="relative min-w-[28px] h-11 flex items-center justify-center focus:outline-none focus-visible:ring-1 focus-visible:ring-white/50 rounded-full"
+            >
+              <span
+                className={`h-1.5 rounded-full transition-all duration-300 pointer-events-none ${
+                  i === activeIndex
+                    ? "w-6 bg-white"
+                    : "w-1.5 bg-zinc-400 hover:bg-zinc-200"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>

@@ -61,7 +61,7 @@ const Process = () => {
             >
               {/* Number */}
               <div
-                className="text-2xl sm:text-4xl lg:text-[4vw] font-[font2] leading-none font-bold text-zinc-500 group-hover:text-zinc-200 transition-colors duration-300"
+                className="text-2xl sm:text-4xl lg:text-[4vw] font-[font2] leading-none font-bold text-zinc-400 group-hover:text-zinc-200 transition-colors duration-300"
                 aria-hidden="true"
               >
                 {card.number}

@@ -1,15 +1,16 @@
+import { useState, useEffect, lazy, Suspense } from "react";
 import Home from "./pages/Home";
 import { Navbar } from "./components/Navbar";
 import Cursor from "./components/Cursor";
-import About from "./pages/About";
-import Skills from "./pages/Skills";
-import Work from "./pages/Work";
-import Contact from "./pages/Contact";
-import { useState, useEffect } from "react";
 import Loader from "./components/Loader";
 import ScrollProgress from "./components/ScrollProgress";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+const About = lazy(() => import("./pages/About"));
+const Skills = lazy(() => import("./pages/Skills"));
+const Work = lazy(() => import("./pages/Work"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,21 +63,21 @@ const App = () => {
       >
         Skip to main content
       </a>
-      {loading ? (
-        <Loader onComplete={() => setLoading(false)} />
-      ) : (
-        <>
-          <ScrollProgress />
-          <Navbar />
-          <main id="main-content" role="main">
-            <Home />
-            <About />
-            <Skills />
-            <Work />
-            <Contact />
-          </main>
-        </>
-      )}
+
+      {/* Decorative Splash Loader — overlays the page during initial mount, then smoothly unmounts */}
+      {loading && <Loader onComplete={() => setLoading(false)} />}
+
+      <ScrollProgress />
+      <Navbar />
+      <main id="main-content" role="main">
+        <Home />
+        <Suspense fallback={null}>
+          <About />
+          <Skills />
+          <Work />
+          <Contact />
+        </Suspense>
+      </main>
     </>
   );
 };

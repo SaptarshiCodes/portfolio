@@ -1,4 +1,5 @@
-import { FaGithub, FaArrowRight } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FiArrowUpRight } from "react-icons/fi";
 
 const ProjectCard = ({ project, index }) => {
   return (
@@ -102,9 +103,11 @@ const ProjectCard = ({ project, index }) => {
                   <img
                     src={mobileImg}
                     alt={`${project.title} interface preview`}
+                    width="1200"
+                    height="640"
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-auto block"
+                    className="w-full h-auto block aspect-[1200/640]"
                   />
                 </picture>
               </div>
@@ -175,41 +178,105 @@ const ProjectCard = ({ project, index }) => {
           ))}
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-zinc-800 my-6 lg:my-[2vw]" />
-
-        {/* Links */}
+        {/* Project Action CTAs */}
         <div
           data-scroll-reveal
-          className="flex flex-wrap items-center gap-6 sm:gap-10 lg:gap-[5vw]"
+          className="pt-6 lg:pt-[2vw] mt-6 lg:mt-[2vw] border-t border-zinc-800/80 flex flex-wrap items-center gap-3 sm:gap-4"
         >
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Explore live demo of ${project.title}`}
+              className="
+                group
+                relative
+                inline-flex
+                items-center
+                justify-center
+                gap-2.5
+                px-5
+                py-2.5
+                sm:px-6
+                sm:py-3
+                lg:px-[1.6vw]
+                lg:py-[0.75vw]
+                rounded-full
+                bg-white
+                text-zinc-950
+                font-[font2]
+                font-semibold
+                text-xs
+                sm:text-sm
+                lg:text-[0.95vw]
+                tracking-wide
+                shadow-[0_4px_20px_rgba(255,255,255,0.15)]
+                hover:shadow-[0_6px_28px_rgba(255,255,255,0.25)]
+                hover:bg-zinc-100
+                active:scale-[0.97]
+                transition-all
+                duration-300
+                focus-visible:ring-2
+                focus-visible:ring-white
+                focus-visible:outline-none
+              "
+            >
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span>Explore Project</span>
+              <FiArrowUpRight className="text-sm lg:text-[1.1vw] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          )}
+
           {project.github && (
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View ${project.title} source code on GitHub`}
-              className="group flex items-center gap-2 lg:gap-[0.8vw] text-sm sm:text-base lg:text-[1.2vw] text-zinc-300 hover:text-white transition-colors font-medium focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none rounded"
+              className="
+                group
+                inline-flex
+                items-center
+                justify-center
+                gap-2.5
+                px-4.5
+                py-2.5
+                sm:px-5
+                sm:py-3
+                lg:px-[1.4vw]
+                lg:py-[0.75vw]
+                rounded-full
+                border
+                border-zinc-700/80
+                bg-zinc-900/70
+                hover:bg-zinc-800/90
+                hover:border-zinc-500
+                text-zinc-200
+                hover:text-white
+                font-[font2]
+                font-medium
+                text-xs
+                sm:text-sm
+                lg:text-[0.95vw]
+                tracking-wide
+                backdrop-blur-md
+                active:scale-[0.97]
+                transition-all
+                duration-300
+                focus-visible:ring-2
+                focus-visible:ring-zinc-400
+                focus-visible:outline-none
+              "
             >
-              <FaGithub className="text-lg lg:text-xl" />
-              <span>GitHub</span>
-            </a>
-          )}
-          {project.live && (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Open live demo for ${project.title}`}
-              className="group flex items-center gap-2 lg:gap-[0.8vw] text-sm sm:text-base lg:text-[1.2vw] text-zinc-300 hover:text-white transition-colors font-medium focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none rounded"
-            >
-              <span>Explore Project</span>
-              <FaArrowRight className="transition-transform duration-300 size-3.5 lg:size-4 group-hover:translate-x-1" />
+              <FaGithub className="text-sm sm:text-base lg:text-[1.1vw] transition-transform duration-300 group-hover:scale-110" />
+              <span>Source Code</span>
             </a>
           )}
         </div>
-
-        <div className="h-px bg-zinc-800 my-6 lg:my-[2vw]" />
       </div>
     </article>
   );

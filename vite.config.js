@@ -27,28 +27,18 @@ export default defineConfig({
   build: {
     // Increase limit and enable intelligent chunking
     chunkSizeWarningLimit: 600,
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            if (id.includes("gsap")) {
-              return "vendor-gsap";
-            }
-            if (id.includes("motion")) {
-              return "vendor-motion";
-            }
-            if (id.includes("ogl")) {
-              return "vendor-ogl";
-            }
-            if (id.includes("react-icons") || id.includes("lucide-react")) {
-              return "vendor-icons";
-            }
-            if (id.includes("react") || id.includes("react-dom")) {
-              return "vendor-react";
-            }
-            return "vendor-misc";
-          }
-        },
+    modulePreload: {
+      resolveDependencies: (url, deps) => {
+        // Prevent preloading heavy lazy chunks on initial page load
+        return deps.filter(
+          (dep) =>
+            !dep.includes("Work") &&
+            !dep.includes("Skills") &&
+            !dep.includes("Contact") &&
+            !dep.includes("About") &&
+            !dep.includes("motion") &&
+            !dep.includes("fa-")
+        );
       },
     },
   },

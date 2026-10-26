@@ -35,7 +35,7 @@ const ContactRight = () => {
               <span className="text-base lg:text-[1.3vw]">{item.icon}</span>
             </div>
             <div>
-              <span className="block text-[10px] lg:text-[0.75vw] uppercase font-mono tracking-wider text-zinc-500 group-hover:text-zinc-400 transition-colors">
+              <span className="block text-[10px] lg:text-[0.75vw] uppercase font-mono tracking-wider text-zinc-400 group-hover:text-zinc-300 transition-colors">
                 {item.title}
               </span>
               <span className="text-sm sm:text-base lg:text-[1.15vw] font-medium text-zinc-200 group-hover:text-white transition-colors">
@@ -43,7 +43,7 @@ const ContactRight = () => {
               </span>
             </div>
           </div>
-          <FiArrowUpRight className="text-zinc-500 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-lg lg:text-[1.3vw] shrink-0 ml-2" />
+          <FiArrowUpRight aria-hidden="true" className="text-zinc-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-lg lg:text-[1.3vw] shrink-0 ml-2" />
         </a>
       ))}
 

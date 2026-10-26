@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import { FiMenu, FiX, FiArrowUpRight } from "react-icons/fi";
 
 export const Navbar = () => {
@@ -33,7 +32,7 @@ export const Navbar = () => {
           onClick={() => setMobileOpen((prev) => !prev)}
           aria-expanded={mobileOpen}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          className="p-1.5 md:px-3 md:py-1.5 text-zinc-300 hover:text-white rounded-full hover:bg-white/10 transition-colors flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:outline-none border border-transparent hover:border-white/10"
+          className="min-h-[44px] min-w-[44px] justify-center p-1.5 md:px-3 md:py-1.5 text-zinc-300 hover:text-white rounded-full hover:bg-white/10 transition-colors flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:outline-none border border-transparent hover:border-white/10"
         >
           <span className="hidden md:inline text-xs font-semibold uppercase tracking-wider text-zinc-300">
             {mobileOpen ? "Close" : "Menu"}
@@ -43,51 +42,47 @@ export const Navbar = () => {
       </nav>
 
       {/* Mobile & Medium Screen Menu Dropdown */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="lg:hidden pointer-events-auto mx-4 md:max-w-xl md:mx-auto mt-1 p-5 md:p-6 rounded-3xl border border-white/10 bg-[hsla(0,0%,8%,0.92)] backdrop-blur-2xl shadow-2xl flex flex-col gap-2.5"
+      <div
+        className={`lg:hidden pointer-events-auto mx-4 md:max-w-xl md:mx-auto mt-1 p-5 md:p-6 rounded-3xl border border-white/10 bg-[hsla(0,0%,8%,0.92)] backdrop-blur-2xl shadow-2xl flex flex-col gap-2.5 transition-all duration-200 ease-out origin-top ${
+          mobileOpen
+            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+            : "opacity-0 -translate-y-2 scale-95 pointer-events-none hidden"
+        }`}
+      >
+        {[
+          { label: "Home", target: "home" },
+          { label: "About", target: "about" },
+          { label: "Skills", target: "skills" },
+          { label: "Work", target: "work" },
+          { label: "Contact", target: "contact" },
+        ].map((item) => (
+          <a
+            key={item.target}
+            href={`#${item.target}`}
+            onClick={(e) => {
+              e.preventDefault();
+              setMobileOpen(false);
+              document.getElementById(item.target)?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="text-zinc-200 hover:text-white text-base md:text-lg font-semibold uppercase tracking-wider py-2.5 px-3.5 rounded-xl hover:bg-white/5 transition-colors focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:outline-none"
           >
-            {[
-              { label: "Home", target: "home" },
-              { label: "About", target: "about" },
-              { label: "Skills", target: "skills" },
-              { label: "Work", target: "work" },
-              { label: "Contact", target: "contact" },
-            ].map((item) => (
-              <a
-                key={item.target}
-                href={`#${item.target}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setMobileOpen(false);
-                  document.getElementById(item.target)?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="text-zinc-200 hover:text-white text-base md:text-lg font-semibold uppercase tracking-wider py-2.5 px-3.5 rounded-xl hover:bg-white/5 transition-colors focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:outline-none"
-              >
-                {item.label}
-              </a>
-            ))}
+            {item.label}
+          </a>
+        ))}
 
-            <div className="h-px bg-white/10 my-1" />
+        <div className="h-px bg-white/10 my-1" />
 
-            <a
-              href="/Saptarshi CV.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-between text-black font-bold uppercase tracking-wider py-2.5 px-4 rounded-xl bg-white hover:bg-zinc-100 transition-all duration-200 shadow-[0_0_15px_rgba(255,255,255,0.25)] focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:outline-none"
-            >
-              <span>View Full Resume</span>
-              <FiArrowUpRight size={18} />
-            </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        <a
+          href="/Saptarshi CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setMobileOpen(false)}
+          className="flex items-center justify-between text-black font-bold uppercase tracking-wider py-2.5 px-4 rounded-xl bg-white hover:bg-zinc-100 transition-all duration-200 shadow-[0_0_15px_rgba(255,255,255,0.25)] focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:outline-none"
+        >
+          <span>View Full Resume</span>
+          <FiArrowUpRight size={18} />
+        </a>
+      </div>
     </header>
   );
 };
@@ -304,12 +299,12 @@ const Tab = ({ children, setPosition, targetId, isResume, tabRef }) => {
 
 const Cursor = ({ position }) => {
   return (
-    <motion.li
-      animate={position}
-      transition={{
-        type: "spring",
-        stiffness: 350,
-        damping: 30,
+    <li
+      style={{
+        left: `${position.left}px`,
+        width: `${position.width}px`,
+        opacity: position.opacity,
+        transition: "left 320ms cubic-bezier(0.16, 1, 0.3, 1), width 320ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease",
       }}
       className="
         absolute
@@ -318,6 +313,7 @@ const Cursor = ({ position }) => {
         h-[90%]
         rounded-full
         bg-white
+        pointer-events-none
       "
       aria-hidden="true"
     />

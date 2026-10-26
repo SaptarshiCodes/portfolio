@@ -120,6 +120,7 @@ export default function SkillsCard() {
                   shrink-0
                   px-3.5
                   py-2
+                  min-h-[44px]
                   rounded-full
                   text-xs
                   font-mono

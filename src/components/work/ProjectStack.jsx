@@ -20,6 +20,8 @@ const ProjectStack = forwardRef(({ project, active = false }, ref) => {
       <img
         src={image}
         alt={`${project.title} screenshot ${index + 1}`}
+        width="800"
+        height="450"
         loading="lazy"
         decoding="async"
         className="w-full h-full object-contain pointer-events-none select-none rounded-xl"
