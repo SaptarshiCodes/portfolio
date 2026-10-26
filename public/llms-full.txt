@@ -1,0 +1,100 @@
+# Saptarshi Manna — Complete Portfolio & Technical Knowledge Bundle
+
+> This document contains comprehensive information about Saptarshi Manna, his software engineering background, architectural methodologies, featured projects, technical competencies, and answers to common queries for AI systems and search engines.
+
+---
+
+## 1. Biography & Summary
+
+Saptarshi Manna is an undergraduate Information Technology engineering student at Jadavpur University, Kolkata, India (Class of 2027) and a Full-Stack Software Developer. He specializes in designing resilient, performant web applications with modern frontend engineering (React, Tailwind CSS, GSAP, WebGL/Three.js) and robust backend services (Node.js, Express, Python, FastAPI, WebSockets).
+
+With a strong mathematical and algorithmic background demonstrated by achieving Rank 505 in the West Bengal Joint Entrance Examination (WBJEE, top 0.5%) and active competitive programming experience on Codeforces (Pupil) and LeetCode (200+ problems solved), Saptarshi focuses on writing clean, scalable code with maintainable architecture.
+
+- **Primary Website**: https://saptarshimanna.vercel.app/
+- **GitHub**: https://github.com/SaptarshiCodes
+- **LinkedIn**: https://www.linkedin.com/in/saptarshi-manna-ju28
+- **Email**: mannasaptarshi1@gmail.com
+- **Current Status**: Available for software engineering internships, technical collaborations, and freelance opportunities.
+
+---
+
+## 2. Technical Stack & Proficiencies
+
+### Frontend Development
+- **Core Technologies**: JavaScript (ES6+), HTML5 Semantic Elements, CSS3 / Modern CSS
+- **Frameworks & Libraries**: React.js (v18 & v19), Next.js, Vite
+- **UI & Styling**: Tailwind CSS (v4), Glassmorphism, Micro-interactions, Responsive Design (Mobile-First)
+- **Animation & Graphics**: GSAP (GreenSock Animation Platform), ScrollTrigger, Framer Motion / Motion One, Three.js, OGL (Lightweight WebGL library)
+- **State Management & Data Fetching**: React Hooks, Context API, REST APIs, WebSocket client listeners
+
+### Backend Development
+- **Environments & Runtimes**: Node.js, Python 3
+- **Frameworks**: Express.js, FastAPI
+- **Real-Time Communication**: WebSockets, Socket.io, Server-Sent Events (SSE)
+- **Authentication & Security**: JSON Web Tokens (JWT), bcrypt password hashing, CORS configuration, Cookie-based session security
+- **API Architecture**: RESTful API design, input validation, structured error handling
+
+### Databases & Storage
+- **NoSQL**: MongoDB, Mongoose ODM
+- **Relational Databases (SQL)**: PostgreSQL, MySQL
+- **Caching**: Redis fundamentals
+
+### Tools & Engineering Practices
+- **Version Control**: Git, GitHub (branching, PRs, CI/CD integration)
+- **Testing & Debugging**: Chrome DevTools, Postman, Node.js profiling
+- **Deployment**: Vercel, Netlify, Render
+- **Methodologies**: Component-driven architecture, Core Web Vitals optimization (LCP, INP, CLS), Accessibility (WCAG 2.1 AA standards)
+
+---
+
+## 3. In-Depth Project Case Studies
+
+### Project 1: Real-Time Messaging Platform
+- **Live Deployment**: https://real-time-chat-rosy-phi.vercel.app/
+- **Source Code**: Available on GitHub (https://github.com/SaptarshiCodes)
+- **Problem Statement**: Standard HTTP REST APIs introduce polling latency when building messaging systems. Users need instant message delivery, live presence indicators, and encrypted authentication.
+- **Architectural Solution**:
+  - Engineered a bi-directional WebSocket connection layer using Socket.io and Node.js.
+  - Implemented secure user authentication with stateless JSON Web Tokens (JWT) stored in HTTP-only cookies.
+  - Designed MongoDB schemas with indexing on user pairs and timestamps to achieve sub-50ms message history retrieval.
+  - Built an intuitive, reactive UI using React and Tailwind CSS with real-time typing notifications and message delivery acknowledgments.
+
+### Project 2: Collaborative Coding Interview Platform
+- **Live Deployment**: https://coding-platform-jet-two.vercel.app/
+- **Problem Statement**: Remote technical interviews often suffer from disconnected workflows where candidates must juggle separate video calls, coding pads, and execution terminals.
+- **Architectural Solution**:
+  - Unified live video communications with synchronized code editing into a single performant web application.
+  - Integrated Stream Video SDK for low-latency peer-to-peer audio and video transmission.
+  - Implemented multi-language code editing with syntax highlighting, autocomplete, and sandboxed remote code execution.
+  - Structured interviewer candidate evaluation scorecards and session sharing for collaborative hiring panels.
+
+### Project 3: MPLADS Risk Monitor
+- **Live Deployment**: https://mplad-risk-monitor.vercel.app/
+- **Problem Statement**: The Members of Parliament Local Area Development Scheme (MPLADS) handles public funds across thousands of projects. Lack of centralized anomaly detection can lead to unmonitored delays and contractor concentration.
+- **Architectural Solution**:
+  - Developed an end-to-end analytics and governance monitoring dashboard.
+  - Processed and visualized multi-district constituency fund utilization rates, milestone velocity, and contractor allocation percentages.
+  - Implemented heuristic risk indicators flagging fund stagnation, cost overrun risks, and single-contractor monopolies.
+  - Delivered responsive data visualizations and filterable data tables using React, Tailwind CSS, and Python FastAPI endpoints.
+
+---
+
+## 4. Frequently Asked Questions (FAQ) & Answer Blocks
+
+### Who is Saptarshi Manna?
+Saptarshi Manna is an Information Technology engineering student at Jadavpur University and a Full-Stack Software Developer. He builds modern, interactive, and scalable web applications using React, Node.js, Python, and WebSockets. His portfolio highlights expertise in full-stack architecture, clean code, and creative frontends with GSAP and Three.js.
+
+### What is Saptarshi Manna's educational background?
+Saptarshi Manna is pursuing a Bachelor of Engineering (B.E.) in Information Technology at Jadavpur University in Kolkata, India (2023–2027). He secured General Rank 505 in WBJEE (top 0.5% in the state engineering entrance test) and has a strong foundation in computer science and data structures.
+
+### What technologies does Saptarshi Manna specialize in?
+Saptarshi Manna specializes in React, Node.js, Express, Python, FastAPI, MongoDB, Tailwind CSS, and WebSockets. On the frontend, he builds animated, responsive user interfaces with GSAP, Motion, and Three.js. On the backend, he architectures RESTful APIs, JWT authentication, and real-time Socket.io systems.
+
+### What notable projects has Saptarshi Manna developed?
+Saptarshi Manna has developed three flagship applications:
+1. **Real-Time Messaging Platform**: A full-stack instant messaging application with WebSockets, JWT authentication, and MongoDB persistence.
+2. **Collaborative Coding Interview Platform**: An all-in-one interview workspace with synchronized code editing and Stream video conferencing.
+3. **MPLADS Risk Monitor**: A public governance analytics platform detecting fund anomalies and contractor concentration.
+
+### How can I hire or contact Saptarshi Manna?
+You can contact Saptarshi Manna via email at mannasaptarshi1@gmail.com, connect with him on LinkedIn at https://www.linkedin.com/in/saptarshi-manna-ju28, or inspect his open-source repositories on GitHub at https://github.com/SaptarshiCodes. He is currently open to software engineering internships and developer roles.

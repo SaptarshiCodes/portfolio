@@ -37,10 +37,48 @@ input, textarea, select {
   font-size: 16px;
 }
 
-/* Custom cursor only active on desktop devices with fine pointer (mouse) */
-@media (pointer: fine) {
-  html, body {
-    cursor: none;
+/* When custom cursor is active: disable the inbuilt browser cursor everywhere */
+html.has-custom-cursor,
+html.has-custom-cursor body,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+/* Enable the inbuilt browser cursor ONLY in the navbar */
+html.has-custom-cursor header,
+html.has-custom-cursor [data-navbar],
+html.has-custom-cursor header *,
+html.has-custom-cursor [data-navbar] * {
+  cursor: auto !important;
+}
+
+html.has-custom-cursor header a,
+html.has-custom-cursor header button,
+html.has-custom-cursor header [role="button"],
+html.has-custom-cursor header .cursor-pointer,
+html.has-custom-cursor header [tabindex="0"],
+html.has-custom-cursor [data-navbar] a,
+html.has-custom-cursor [data-navbar] button,
+html.has-custom-cursor [data-navbar] [role="button"],
+html.has-custom-cursor [data-navbar] .cursor-pointer,
+html.has-custom-cursor [data-navbar] [tabindex="0"] {
+  cursor: pointer !important;
+}
+
+/* On pure touch-only devices (smartphones/tablets without trackpad or mouse) */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor-element,
+  [data-custom-cursor] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor * {
+    cursor: auto !important;
   }
 }
 

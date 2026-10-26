@@ -21,7 +21,7 @@ const ProjectCard = ({ project, index }) => {
         {/* Year */}
         <p
           data-scroll-reveal
-          className="uppercase tracking-widest text-zinc-400 text-xs sm:text-sm lg:text-[0.8vw] mb-2 lg:mb-[1vw]"
+          className="uppercase tracking-widest text-zinc-300 font-medium text-xs sm:text-sm lg:text-[0.8vw] mb-2 lg:mb-[1vw]"
         >
           {project.year}
         </p>
@@ -92,15 +92,21 @@ const ProjectCard = ({ project, index }) => {
                 </div>
               </div>
 
-              {/* Browser Content Area (Image with no filters, retaining full original uncropped size) */}
+              {/* Browser Content Area (AVIF with PNG fallback) */}
               <div className="relative w-full bg-zinc-950 overflow-hidden">
-                <img
-                  src={mobileImg}
-                  alt={`${project.title} interface preview`}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-auto block"
-                />
+                <picture className="w-full h-auto block">
+                  <source
+                    type="image/avif"
+                    srcSet={mobileImg.replace(/\.png$/, ".avif")}
+                  />
+                  <img
+                    src={mobileImg}
+                    alt={`${project.title} interface preview`}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-auto block"
+                  />
+                </picture>
               </div>
             </div>
           );

@@ -8,54 +8,104 @@
     <title>Saptarshi Manna | Full-Stack Developer &amp; Software Engineer</title>
     <meta
       name="description"
-      content="Portfolio of Saptarshi Manna — Information Technology student at Jadavpur University and Full-Stack Developer specializing in React, Node.js, Python, FastAPI, and scalable web architectures."
+      content="Official portfolio of Saptarshi Manna — Information Technology student at Jadavpur University and Full-Stack Developer specializing in React, Node.js, Python, FastAPI, and scalable web architectures."
     />
     <meta
       name="keywords"
-      content="Saptarshi Manna, Full-Stack Developer, Software Engineer, Portfolio, React, Node.js, Python, FastAPI, MongoDB, Tailwind CSS, GSAP, Web Developer"
+      content="Saptarshi Manna, Full-Stack Developer, Software Engineer, Portfolio, Jadavpur University, React, Node.js, Python, FastAPI, MongoDB, Tailwind CSS, GSAP, Web Developer, WebSockets, Creative Developer"
     />
     <meta name="author" content="Saptarshi Manna" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="theme-color" content="#080808" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://saptarshimanna.vercel.app/" />
+
+    <!-- Machine-Readable AI Knowledge Discovery (llms.txt standard) -->
+    <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt" />
+    <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="Full LLM Knowledge Bundle" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
     <!-- Favicon & Icons -->
     <link rel="icon" type="image/png" sizes="48x48" href="/Sm_logo.png" />
     <link rel="apple-touch-icon" href="/Sm_logo.png" />
 
+    <!-- Performance Preloads for Critical Resources -->
+    <link rel="preload" href="/fonts/font1.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/font2.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/profile-pic.avif" as="image" type="image/avif" fetchpriority="high" />
+
+    <!-- Critical Base Style to prevent FOUC during non-blocking CSS load -->
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #080808;
+        color: #ededed;
+      }
+    </style>
+
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="profile" />
     <meta property="og:title" content="Saptarshi Manna | Full-Stack Developer &amp; Software Engineer" />
     <meta
       property="og:description"
-      content="Portfolio of Saptarshi Manna — Full-Stack Developer specializing in React, Node.js, Python, and scalable digital architectures."
+      content="Portfolio of Saptarshi Manna — Information Technology student at Jadavpur University and Full-Stack Developer building scalable web applications."
     />
-    <meta property="og:image" content="/profile pic.png" />
+    <meta property="og:image" content="https://saptarshimanna.vercel.app/profile-pic.png" />
+    <meta property="og:url" content="https://saptarshimanna.vercel.app/" />
     <meta property="og:site_name" content="Saptarshi Manna Portfolio" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="profile:first_name" content="Saptarshi" />
+    <meta property="profile:last_name" content="Manna" />
+    <meta property="profile:username" content="SaptarshiCodes" />
 
-    <!-- Twitter -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Saptarshi Manna | Full-Stack Developer &amp; Software Engineer" />
     <meta
       name="twitter:description"
-      content="Portfolio of Saptarshi Manna — Full-Stack Developer specializing in React, Node.js, Python, and scalable digital architectures."
+      content="Portfolio of Saptarshi Manna — Information Technology student at Jadavpur University and Full-Stack Developer building scalable web applications."
     />
-    <meta name="twitter:image" content="/profile pic.png" />
+    <meta name="twitter:image" content="https://saptarshimanna.vercel.app/profile-pic.png" />
+    <meta name="twitter:creator" content="@SaptarshiCodes" />
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Structured Data (JSON-LD) for Search Engines & AI Overviews -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
             "@type": "Person",
+            "@id": "https://saptarshimanna.vercel.app/#person",
             "name": "Saptarshi Manna",
+            "givenName": "Saptarshi",
+            "familyName": "Manna",
             "jobTitle": "Full-Stack Developer & Software Engineer",
-            "description": "Information Technology student at Jadavpur University and Full-Stack Developer building scalable web applications.",
-            "image": "/profile pic.png",
+            "description": "Information Technology engineering student at Jadavpur University and Full-Stack Developer specializing in React, Node.js, Python, FastAPI, and scalable web architectures.",
+            "url": "https://saptarshimanna.vercel.app/",
+            "image": "https://saptarshimanna.vercel.app/profile-pic.png",
+            "email": "mailto:mannasaptarshi1@gmail.com",
             "alumniOf": {
               "@type": "CollegeOrUniversity",
-              "name": "Jadavpur University"
+              "name": "Jadavpur University",
+              "url": "http://www.jaduniv.edu.in/"
             },
+            "knowsAbout": [
+              "Full-Stack Development",
+              "React.js",
+              "Node.js",
+              "Python",
+              "FastAPI",
+              "WebSockets",
+              "Socket.io",
+              "MongoDB",
+              "Express.js",
+              "Tailwind CSS",
+              "GSAP Animations",
+              "Three.js",
+              "Data Structures and Algorithms"
+            ],
             "sameAs": [
               "https://github.com/SaptarshiCodes",
               "https://www.linkedin.com/in/saptarshi-manna-ju28",
@@ -64,12 +114,28 @@
           },
           {
             "@type": "WebSite",
+            "@id": "https://saptarshimanna.vercel.app/#website",
             "name": "Saptarshi Manna Portfolio",
-            "description": "Official portfolio of Saptarshi Manna."
+            "url": "https://saptarshimanna.vercel.app/",
+            "description": "Official software engineering and full-stack development portfolio of Saptarshi Manna.",
+            "author": {
+              "@id": "https://saptarshimanna.vercel.app/#person"
+            },
+            "inLanguage": "en-US"
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://saptarshimanna.vercel.app/#profilepage",
+            "url": "https://saptarshimanna.vercel.app/",
+            "name": "Saptarshi Manna — Portfolio & Profile",
+            "mainEntity": {
+              "@id": "https://saptarshimanna.vercel.app/#person"
+            }
           },
           {
             "@type": "ItemList",
             "name": "Featured Software Projects",
+            "description": "Flagship full-stack web applications and software systems built by Saptarshi Manna.",
             "itemListElement": [
               {
                 "@type": "SoftwareApplication",
@@ -77,8 +143,11 @@
                 "name": "Real-Time Messaging Platform",
                 "applicationCategory": "CommunicationApplication",
                 "operatingSystem": "Web",
-                "description": "A production-ready messaging platform featuring real-time communication, secure JWT authentication, and chat history persistence.",
-                "url": "https://real-time-chat-rosy-phi.vercel.app/"
+                "description": "A production-ready instant messaging platform featuring bi-directional WebSockets, secure JWT authentication, and MongoDB chat persistence.",
+                "url": "https://real-time-chat-rosy-phi.vercel.app/",
+                "author": {
+                  "@id": "https://saptarshimanna.vercel.app/#person"
+                }
               },
               {
                 "@type": "SoftwareApplication",
@@ -86,8 +155,11 @@
                 "name": "Real-Time Collaborative Coding Interview Platform",
                 "applicationCategory": "DeveloperApplication",
                 "operatingSystem": "Web",
-                "description": "A full-stack collaborative interview platform enabling live code editing, video conferencing via Stream, and code execution.",
-                "url": "https://coding-platform-jet-two.vercel.app/"
+                "description": "A full-stack collaborative interview platform with synchronized multi-language code editing, integrated Stream video conferencing, and code execution.",
+                "url": "https://coding-platform-jet-two.vercel.app/",
+                "author": {
+                  "@id": "https://saptarshimanna.vercel.app/#person"
+                }
               },
               {
                 "@type": "SoftwareApplication",
@@ -95,8 +167,48 @@
                 "name": "MPLADS Risk Monitor",
                 "applicationCategory": "Governance & Analytics Application",
                 "operatingSystem": "Web",
-                "description": "An end-to-end governance and risk monitoring system designed to identify fund anomalies, execution delays, and contractor concentration in MPLADS projects.",
-                "url": "https://mplad-risk-monitor.vercel.app/"
+                "description": "An end-to-end governance and risk monitoring system analyzing fund utilization, project execution delays, and contractor concentration in MPLADS projects.",
+                "url": "https://mplad-risk-monitor.vercel.app/",
+                "author": {
+                  "@id": "https://saptarshimanna.vercel.app/#person"
+                }
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Who is Saptarshi Manna?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Saptarshi Manna is an Information Technology engineering undergraduate at Jadavpur University and a Full-Stack Software Developer. He specializes in building scalable web applications with React, Node.js, Python, and WebSockets, alongside creative interactive animations with GSAP and Three.js."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What technical skills does Saptarshi Manna have?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Saptarshi Manna's technical skills include React, Next.js, Node.js, Express, Python, FastAPI, MongoDB, PostgreSQL, WebSockets, Socket.io, Tailwind CSS, GSAP, and Git. He also has strong algorithmic capabilities with over 200 DSA problems solved across LeetCode and Codeforces."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What projects has Saptarshi Manna built?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Saptarshi Manna has developed major projects including a Real-Time Messaging Platform with Socket.io and JWT, a Collaborative Coding Interview Platform with live Stream video conferencing, and the MPLADS Risk Monitor for public governance analytics."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How can I contact or hire Saptarshi Manna?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You can contact Saptarshi Manna via email at mannasaptarshi1@gmail.com, connect on LinkedIn at https://www.linkedin.com/in/saptarshi-manna-ju28, or view his open-source work on GitHub at https://github.com/SaptarshiCodes."
+                }
               }
             ]
           }
@@ -105,6 +217,50 @@
     </script>
   </head>
   <body>
+    <!-- Fallback Content for Non-JavaScript Crawlers & AI Search Bots (AgentReady AR-READ-01) -->
+    <noscript>
+      <header>
+        <h1>Saptarshi Manna — Full-Stack Developer &amp; Software Engineer</h1>
+        <p>Information Technology student at Jadavpur University (2023–2027) building scalable, performant web applications.</p>
+        <nav aria-label="Quick links">
+          <a href="#about">About</a> | <a href="#skills">Skills</a> | <a href="#work">Projects</a> | <a href="#contact">Contact</a> | <a href="/llms.txt">LLMs.txt</a>
+        </nav>
+      </header>
+      <main>
+        <section id="about-summary">
+          <h2>About Saptarshi Manna</h2>
+          <p>Creative problem solver and software engineer at Jadavpur University. Achieved WBJEE Rank 505 (top 0.5% in West Bengal) and Codeforces Pupil ranking with 200+ competitive programming problems solved.</p>
+        </section>
+        <section id="skills-summary">
+          <h2>Technical Skills</h2>
+          <p><strong>Frontend:</strong> React, JavaScript (ES6+), Tailwind CSS, GSAP, Three.js, HTML5, CSS3</p>
+          <p><strong>Backend:</strong> Node.js, Express, Python, FastAPI, WebSockets, Socket.io, RESTful APIs, JWT Auth</p>
+          <p><strong>Databases:</strong> MongoDB, PostgreSQL, MySQL</p>
+          <p><strong>Tools:</strong> Git, GitHub, Docker, Postman, Vite, Vercel</p>
+        </section>
+        <section id="projects-summary">
+          <h2>Featured Projects</h2>
+          <ul>
+            <li>
+              <strong><a href="https://real-time-chat-rosy-phi.vercel.app/">Real-Time Messaging Platform</a>:</strong> Full-stack chat application with bi-directional WebSockets, JWT authentication, and MongoDB persistence.
+            </li>
+            <li>
+              <strong><a href="https://coding-platform-jet-two.vercel.app/">Collaborative Coding Interview Platform</a>:</strong> Real-time coding pad with integrated Stream video conferencing and code execution.
+            </li>
+            <li>
+              <strong><a href="https://mplad-risk-monitor.vercel.app/">MPLADS Risk Monitor</a>:</strong> Governance data analytics dashboard detecting fund anomalies and contractor concentration.
+            </li>
+          </ul>
+        </section>
+        <section id="contact-summary">
+          <h2>Contact Saptarshi Manna</h2>
+          <p>Email: <a href="mailto:mannasaptarshi1@gmail.com">mannasaptarshi1@gmail.com</a></p>
+          <p>GitHub: <a href="https://github.com/SaptarshiCodes">github.com/SaptarshiCodes</a></p>
+          <p>LinkedIn: <a href="https://www.linkedin.com/in/saptarshi-manna-ju28">linkedin.com/in/saptarshi-manna-ju28</a></p>
+        </section>
+      </main>
+    </noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

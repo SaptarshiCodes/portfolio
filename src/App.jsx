@@ -55,17 +55,26 @@ const App = () => {
   return (
     <>
       <Cursor />
+      {/* Accessible Skip Link for Keyboard Users and Screen Readers */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-md focus:font-semibold focus:shadow-xl focus:outline-none"
+      >
+        Skip to main content
+      </a>
       {loading ? (
         <Loader onComplete={() => setLoading(false)} />
       ) : (
         <>
           <ScrollProgress />
           <Navbar />
-          <Home />
-          <About />
-          <Skills />
-          <Work />
-          <Contact />
+          <main id="main-content" role="main">
+            <Home />
+            <About />
+            <Skills />
+            <Work />
+            <Contact />
+          </main>
         </>
       )}
     </>

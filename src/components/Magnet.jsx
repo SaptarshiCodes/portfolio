@@ -10,11 +10,28 @@ const Magnet = ({
   const ref = useRef(null);
 
   useEffect(() => {
+    // Only enable on devices with a mouse (pointer: fine)
+    if (
+      typeof window === "undefined" ||
+      !window.matchMedia("(pointer: fine)").matches
+    ) {
+      return;
+    }
+
     const el = ref.current;
+    if (!el) return;
 
+    let rect = el.getBoundingClientRect();
+    const handleResizeOrScroll = () => {
+      rect = el.getBoundingClientRect();
+    };
+
+    window.addEventListener("scroll", handleResizeOrScroll, { passive: true });
+    window.addEventListener("resize", handleResizeOrScroll, { passive: true });
+
+    let isNear = false;
     const move = (e) => {
-      const rect = el.getBoundingClientRect();
-
+      if (!rect) return;
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
 
@@ -25,25 +42,33 @@ const Magnet = ({
         Math.abs(distanceX) < rect.width / 2 + padding &&
         Math.abs(distanceY) < rect.height / 2 + padding
       ) {
+        isNear = true;
         gsap.to(el, {
           x: distanceX * strength,
           y: distanceY * strength,
           duration: 0.35,
           ease: "power3.out",
+          overwrite: "auto",
         });
-      } else {
+      } else if (isNear) {
+        isNear = false;
         gsap.to(el, {
           x: 0,
           y: 0,
           duration: 0.6,
           ease: "elastic.out(1,0.35)",
+          overwrite: "auto",
         });
       }
     };
 
-    window.addEventListener("mousemove", move);
+    window.addEventListener("mousemove", move, { passive: true });
 
-    return () => window.removeEventListener("mousemove", move);
+    return () => {
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("scroll", handleResizeOrScroll);
+      window.removeEventListener("resize", handleResizeOrScroll);
+    };
   }, [padding, strength]);
 
   return (

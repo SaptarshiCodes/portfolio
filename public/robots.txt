@@ -1,0 +1,42 @@
+# Robots.txt for Saptarshi Manna Portfolio
+# Website: https://saptarshimanna.vercel.app/
+
+User-agent: *
+Allow: /
+
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# AI Search and Retrieval Crawlers (Answer Engine Optimization / AEO)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+# Sitemap
+Sitemap: https://saptarshimanna.vercel.app/sitemap.xml
+
+# Machine-Readable AI Knowledge Discovery
+# Specification: https://llmstxt.org/
+# See /llms.txt for structured agent summary
+# See /llms-full.txt for comprehensive knowledge bundle

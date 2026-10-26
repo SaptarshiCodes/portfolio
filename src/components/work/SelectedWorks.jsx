@@ -66,12 +66,12 @@ const SelectedWorks = () => {
       </h2>
 
       <div data-scroll-reveal className="my-4 lg:my-[1.5vw] flex justify-between items-end">
-        <p className="text-zinc-400 font-[font1] font-light text-sm sm:text-base lg:text-[1.2vw] leading-relaxed">
+        <p className="text-zinc-300 font-[font1] text-sm sm:text-base lg:text-[1.2vw] leading-relaxed">
           A collection of projects that define my journey
           <br className="hidden sm:inline" /> in digital product creation.
         </p>
 
-        <span className="text-zinc-400 font-[font2] text-sm sm:text-base lg:text-[1.5vw] tabular-nums">
+        <span className="text-zinc-300 font-[font2] text-sm sm:text-base lg:text-[1.5vw] tabular-nums">
           (0{projects.length})
         </span>
       </div>

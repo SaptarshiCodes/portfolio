@@ -61,7 +61,7 @@ const Process = () => {
             >
               {/* Number */}
               <div
-                className="text-2xl sm:text-4xl lg:text-[4vw] font-[font2] leading-none font-bold text-zinc-600 group-hover:text-zinc-300 transition-colors duration-300"
+                className="text-2xl sm:text-4xl lg:text-[4vw] font-[font2] leading-none font-bold text-zinc-500 group-hover:text-zinc-200 transition-colors duration-300"
                 aria-hidden="true"
               >
                 {card.number}
@@ -70,7 +70,7 @@ const Process = () => {
               <h4 className="text-base sm:text-xl lg:text-2xl font-bold mt-2 sm:mt-3 font-[font2] text-zinc-100 tracking-tight">
                 {card.title}
               </h4>
-              <p className="text-xs sm:text-sm lg:text-[0.95vw] text-zinc-400 mt-1.5 sm:mt-2 font-[font1] leading-relaxed">
+              <p className="text-xs sm:text-sm lg:text-[0.95vw] text-zinc-300 mt-1.5 sm:mt-2 font-[font1] leading-relaxed">
                 {card.description}
               </p>
             </div>

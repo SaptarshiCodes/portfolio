@@ -15,15 +15,17 @@ const ProjectStack = forwardRef(({ project, active = false }, ref) => {
   }));
 
   const cards = project.images.map((image, index) => (
-    <img
-      key={index}
-      src={image}
-      alt={`${project.title} screenshot ${index + 1}`}
-      loading="lazy"
-      decoding="async"
-      className="w-full h-full object-contain pointer-events-none select-none rounded-xl"
-      draggable={false}
-    />
+    <picture key={index} className="w-full h-full block">
+      <source type="image/avif" srcSet={image.replace(/\.png$/, ".avif")} />
+      <img
+        src={image}
+        alt={`${project.title} screenshot ${index + 1}`}
+        loading="lazy"
+        decoding="async"
+        className="w-full h-full object-contain pointer-events-none select-none rounded-xl"
+        draggable={false}
+      />
+    </picture>
   ));
 
   return (
@@ -33,16 +35,16 @@ const ProjectStack = forwardRef(({ project, active = false }, ref) => {
       }`}
     >
       <div className="relative w-[92%] max-w-[48vw] aspect-[1.87/1]">
-        {/* Background Title */}
-        <div className="absolute inset-0 flex items-center justify-center-safe pointer-events-none select-none z-0">
-          <h1
+        {/* Background Title (Decorative Watermark) */}
+        <div className="absolute inset-0 flex items-center justify-center-safe pointer-events-none select-none z-0" aria-hidden="true">
+          <span
             className="text-[12vw] font-black uppercase text-white/3 leading-relaxed text-center"
             style={{
               textShadow: "0 0 10px rgba(255,255,255,0.20)",
             }}
           >
             {project.bgTitle || project.title}
-          </h1>
+          </span>
         </div>
 
         {/* Stack */}

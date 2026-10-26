@@ -1,0 +1,54 @@
+# Saptarshi Manna — Full-Stack Developer & Software Engineer
+
+> Saptarshi Manna is an Information Technology undergraduate at Jadavpur University (Class of 2027) and a Full-Stack Software Engineer specializing in modern JavaScript/TypeScript (React, Node.js), Python (FastAPI), real-time WebSockets, distributed data architectures, and creative web development (GSAP, Three.js, Tailwind CSS).
+
+## Identity & Core Details
+
+- **Name**: Saptarshi Manna
+- **Role**: Full-Stack Developer & Software Engineer
+- **Education**: Bachelor of Engineering (B.E.) in Information Technology, Jadavpur University, Kolkata (2023 - 2027)
+- **Competitive Milestones**: WBJEE General Rank 505 (top 0.5% in state), Codeforces Pupil, 200+ LeetCode & Codeforces DSA problems solved
+- **Website**: https://saptarshimanna.vercel.app/
+- **GitHub**: https://github.com/SaptarshiCodes
+- **LinkedIn**: https://www.linkedin.com/in/saptarshi-manna-ju28
+- **Email**: mannasaptarshi1@gmail.com
+- **Full Knowledge Bundle**: https://saptarshimanna.vercel.app/llms-full.txt
+
+## Primary Technical Skills
+
+- **Frontend Engineering**: React.js, Next.js, JavaScript (ES6+), Tailwind CSS, GSAP (GreenSock Animation Platform), Three.js, OGL, Framer Motion, HTML5, CSS3, Responsive Design, Accessibility (WCAG 2.1 AA)
+- **Backend Engineering**: Node.js, Express.js, Python, FastAPI, WebSockets, Socket.io, RESTful API Design, JWT Authentication, Server-Sent Events (SSE)
+- **Databases & Caching**: MongoDB, Mongoose, PostgreSQL, MySQL, Redis
+- **DevOps, Tooling & Cloud**: Git, GitHub, Docker, Postman, Vite, Vercel, Netlify, Linux/Bash
+
+## Featured Software Projects
+
+### 1. Real-Time Messaging Platform
+- **Category**: Real-Time Communication & Full-Stack Web Application
+- **Live URL**: https://real-time-chat-rosy-phi.vercel.app/
+- **Key Features**: Bi-directional instant messaging via Socket.io/WebSockets, end-to-end user authentication with JSON Web Tokens (JWT), online/offline presence indicators, conversation history persistence in MongoDB, responsive dark-mode UI with Tailwind CSS.
+- **Tech Stack**: React, Node.js, Express, Socket.io, MongoDB, JWT, Tailwind CSS.
+
+### 2. Collaborative Coding Interview Platform
+- **Category**: Developer Productivity & Real-Time Collaboration
+- **Live URL**: https://coding-platform-jet-two.vercel.app/
+- **Key Features**: Synchronized code editor supporting multiple programming languages, integrated high-definition video conferencing powered by Stream Video SDK, sandboxed code execution engine, session management, and candidate evaluation interface.
+- **Tech Stack**: React, Node.js, Express, Stream Video SDK, Monaco Editor / CodeMirror, REST APIs, Tailwind CSS.
+
+### 3. MPLADS Risk Monitor
+- **Category**: Governance Analytics, Data Visualization & Anomaly Detection
+- **Live URL**: https://mplad-risk-monitor.vercel.app/
+- **Key Features**: Comprehensive analytics dashboard analyzing Members of Parliament Local Area Development Scheme (MPLADS) fund allocations, multi-dimensional risk scoring for project delays, contractor concentration risk detection, anomaly identification, and interactive district/constituency visualizations.
+- **Tech Stack**: React, Python / FastAPI, Tailwind CSS, Recharts / Chart.js, RESTful Data APIs.
+
+## Academic & Engineering Background
+
+- **Institution**: Jadavpur University, Faculty of Engineering & Technology, Kolkata, India.
+- **Degree**: Bachelor of Engineering in Information Technology (Expected Graduation: 2027).
+- **Coursework**: Data Structures and Algorithms, Object-Oriented Programming (OOP), Database Management Systems (DBMS), Computer Networks, Operating Systems, Software Engineering Principles.
+
+## Machine-Readable Resources
+
+- Full Documentation & FAQ: [llms-full.txt](https://saptarshimanna.vercel.app/llms-full.txt)
+- Sitemap: [sitemap.xml](https://saptarshimanna.vercel.app/sitemap.xml)
+- Robots Directives: [robots.txt](https://saptarshimanna.vercel.app/robots.txt)

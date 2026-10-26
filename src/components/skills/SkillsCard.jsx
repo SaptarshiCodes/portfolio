@@ -129,13 +129,13 @@ export default function SkillsCard() {
                   ${
                     isSelected
                       ? "bg-white text-zinc-950 shadow-[0_4px_20px_rgba(255,255,255,0.25)] font-semibold"
-                      : "bg-zinc-900/90 text-zinc-400 border border-zinc-800/80 hover:text-zinc-200 hover:border-zinc-700 font-medium"
+                      : "bg-zinc-900/90 text-zinc-300 border border-zinc-750 hover:text-white hover:border-zinc-600 font-medium"
                   }
                 `}
               >
                 <Icon
                   size={14}
-                  className={isSelected ? "text-zinc-950" : "text-zinc-400"}
+                  className={isSelected ? "text-zinc-950" : "text-zinc-300"}
                 />
                 <span>{cat.shortTitle}</span>
                 <span
@@ -148,7 +148,7 @@ export default function SkillsCard() {
                     ${
                       isSelected
                         ? "bg-zinc-950/15 text-zinc-900"
-                        : "bg-zinc-800 text-zinc-400"
+                        : "bg-zinc-800 text-zinc-300"
                     }
                   `}
                 >
@@ -164,14 +164,14 @@ export default function SkillsCard() {
           {/* Panel Header */}
           <div className="flex items-center justify-between pb-3.5 mb-3.5 border-b border-zinc-800/80">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-zinc-800/90 border border-zinc-700/80">
-                <CurrentIcon size={18} className="text-zinc-200" />
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-zinc-800 border border-zinc-700">
+                <CurrentIcon size={18} className="text-zinc-100" />
               </div>
               <div>
                 <h3 className="font-[font2] text-lg font-semibold text-white tracking-tight">
                   {currentCat.title}
                 </h3>
-                <span className="text-[11px] font-mono text-zinc-400">
+                <span className="text-[11px] font-mono text-zinc-300">
                   {currentSkills.length}{" "}
                   {currentSkills.length === 1 ? "Technology" : "Technologies"}
                 </span>
@@ -179,14 +179,14 @@ export default function SkillsCard() {
             </div>
 
             {/* Status Beacon Tag */}
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-mono">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-mono font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Active Stack
             </div>
           </div>
 
           {/* Category description */}
-          <p className="text-xs text-zinc-400 leading-relaxed font-[font1] mb-4">
+          <p className="text-xs text-zinc-300 leading-relaxed font-[font1] mb-4">
             {currentCat.description}
           </p>
 
@@ -218,7 +218,7 @@ export default function SkillsCard() {
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/70" />
                 <span className="font-medium">{skill.name}</span>
                 {activeCategory === "all" && (
-                  <span className="text-[9px] uppercase tracking-wider text-zinc-400 bg-zinc-800/90 px-1.5 py-0.5 rounded font-mono">
+                  <span className="text-[9px] uppercase tracking-wider text-zinc-300 bg-zinc-800 px-1.5 py-0.5 rounded font-mono font-medium">
                     {skill.category}
                   </span>
                 )}

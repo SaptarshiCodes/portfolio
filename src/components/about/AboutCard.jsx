@@ -95,7 +95,7 @@ export default function MainGrid() {
   };
 
   return (
-    <div className="w-full pt-4 sm:pt-8 lg:pt-[4vw] px-0 sm:px-4 lg:px-[5vw]">
+    <div className="w-full pt-4 sm:pt-8 lg:pt-[4vw] px-0">
       {/* Mobile Horizontal Snap Reel (under md) */}
       <div className="block md:hidden">
         {/* Header with counter & interactive swipe buttons */}
@@ -104,8 +104,8 @@ export default function MainGrid() {
             <span className="text-[11px] font-mono uppercase tracking-widest text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full">
               {String(activeIndex + 1).padStart(2, "0")} / {String(cardData.length).padStart(2, "0")}
             </span>
-            <span className="text-zinc-600">•</span>
-            <span className="text-xs font-medium text-zinc-300 font-[font2]">
+            <span className="text-zinc-400">•</span>
+            <span className="text-xs font-semibold text-zinc-200 font-[font2]">
               {cardData[activeIndex].title}
             </span>
           </div>
@@ -116,7 +116,7 @@ export default function MainGrid() {
               onClick={() => scrollTo(activeIndex - 1)}
               disabled={activeIndex === 0}
               aria-label="Previous aspect"
-              className="w-8 h-8 rounded-full bg-zinc-900/90 border border-zinc-800 flex items-center justify-center text-zinc-300 disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-all"
+              className="w-8 h-8 rounded-full bg-zinc-800/90 border border-zinc-700 flex items-center justify-center text-zinc-200 disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-all"
             >
               <FiArrowLeft size={14} />
             </button>
@@ -124,7 +124,7 @@ export default function MainGrid() {
               onClick={() => scrollTo(activeIndex + 1)}
               disabled={activeIndex === cardData.length - 1}
               aria-label="Next aspect"
-              className="w-8 h-8 rounded-full bg-zinc-900/90 border border-zinc-800 flex items-center justify-center text-zinc-300 disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-all"
+              className="w-8 h-8 rounded-full bg-zinc-800/90 border border-zinc-700 flex items-center justify-center text-zinc-200 disabled:opacity-30 disabled:pointer-events-none active:scale-90 transition-all"
             >
               <FiArrowRight size={14} />
             </button>
@@ -166,22 +166,22 @@ export default function MainGrid() {
                   select-none
                   ${
                     isCurrent
-                      ? "bg-[hsl(0,0%,10%)] border-zinc-700 shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
-                      : "bg-[hsl(0,0%,8%)] border-zinc-800/80 opacity-75"
+                      ? "bg-[hsl(0,0%,11%)] border-zinc-600 shadow-[0_8px_30px_rgba(0,0,0,0.5)] ring-1 ring-white/10"
+                      : "bg-[hsl(0,0%,8%)] border-zinc-800"
                   }
                 `}
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="uppercase tracking-[0.2em] text-[11px] text-zinc-400 font-mono">
+                    <span className="uppercase tracking-[0.2em] text-xs font-semibold text-zinc-300 font-mono">
                       {card.label}
                     </span>
 
                     <div
-                      className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-800/90 border border-zinc-700/80"
+                      className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-800 border border-zinc-700"
                       aria-hidden="true"
                     >
-                      <Icon size={20} className="text-zinc-200" />
+                      <Icon size={20} className="text-zinc-100" />
                     </div>
                   </div>
 
@@ -189,17 +189,17 @@ export default function MainGrid() {
                     {card.title}
                   </h3>
 
-                  <p className="mt-2.5 text-zinc-300 leading-relaxed text-xs">
+                  <p className="mt-2.5 text-zinc-200 leading-relaxed text-xs sm:text-sm">
                     {card.description}
                   </p>
                 </div>
 
                 {/* Badges / Micro-chips */}
-                <div className="mt-4 pt-3.5 border-t border-zinc-800/80 flex flex-wrap gap-1.5">
+                <div className="mt-4 pt-3.5 border-t border-zinc-800 flex flex-wrap gap-1.5">
                   {card.badges.map((badge, bIdx) => (
                     <span
                       key={bIdx}
-                      className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-zinc-900/90 border border-zinc-800 text-zinc-300"
+                      className="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-zinc-800/90 border border-zinc-700 text-zinc-200"
                     >
                       {badge}
                     </span>
@@ -220,7 +220,7 @@ export default function MainGrid() {
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 i === activeIndex
                   ? "w-6 bg-white"
-                  : "w-1.5 bg-zinc-700 hover:bg-zinc-500"
+                  : "w-1.5 bg-zinc-500 hover:bg-zinc-300"
               }`}
             />
           ))}
@@ -228,7 +228,7 @@ export default function MainGrid() {
       </div>
 
       {/* Desktop Grid Layout (md and up) */}
-      <div className="hidden md:grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full">
         {cardData.map((card) => {
           const Icon = card.icon;
 
@@ -262,17 +262,17 @@ export default function MainGrid() {
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="uppercase tracking-[0.25em] text-xs text-zinc-400 font-medium font-mono">
+                    <span className="uppercase tracking-[0.25em] text-xs text-zinc-300 font-semibold font-mono">
                       {card.label}
                     </span>
 
                     <div
-                      className="flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-800/90 border border-zinc-700/80"
+                      className="flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-800 border border-zinc-700"
                       aria-hidden="true"
                     >
                       <Icon
                         size={22}
-                        className="text-zinc-300 group-hover:text-white group-hover:scale-110 transition-all duration-300"
+                        className="text-zinc-200 group-hover:text-white group-hover:scale-110 transition-all duration-300"
                       />
                     </div>
                   </div>
@@ -281,17 +281,17 @@ export default function MainGrid() {
                     {card.title}
                   </h3>
 
-                  <p className="mt-3 text-zinc-300 leading-relaxed text-sm sm:text-base">
+                  <p className="mt-3 text-zinc-200 leading-relaxed text-sm sm:text-base font-[font1]">
                     {card.description}
                   </p>
                 </div>
 
                 {/* Badges / Micro-chips */}
-                <div className="mt-5 pt-4 border-t border-zinc-800/80 flex flex-wrap gap-2">
+                <div className="mt-5 pt-4 border-t border-zinc-800 flex flex-wrap gap-2">
                   {card.badges.map((badge, idx) => (
                     <span
                       key={idx}
-                      className="text-xs font-mono px-2.5 py-1 rounded-md bg-zinc-900/90 border border-zinc-800 text-zinc-300 group-hover:border-zinc-700 transition-colors"
+                      className="text-xs font-mono px-2.5 py-1 rounded-md bg-zinc-800/90 border border-zinc-700 text-zinc-200 group-hover:border-zinc-500 transition-colors"
                     >
                       {badge}
                     </span>

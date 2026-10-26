@@ -253,8 +253,11 @@ export default function Orb({
     container.addEventListener('mousemove', handleMouseMove);
     container.addEventListener('mouseleave', handleMouseLeave);
 
-    let rafId;
+    let rafId = null;
+    let isVisible = true;
+
     const update = t => {
+      if (!isVisible) return;
       rafId = requestAnimationFrame(update);
       const dt = (t - lastTime) * 0.001;
       lastTime = t;
@@ -273,9 +276,27 @@ export default function Orb({
 
       renderer.render({ scene: mesh });
     };
+
+    // Pause WebGL rendering loop when off-screen to preserve GPU/CPU frame budget
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          lastTime = performance.now();
+          cancelAnimationFrame(rafId);
+          rafId = requestAnimationFrame(update);
+        } else {
+          cancelAnimationFrame(rafId);
+        }
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(container);
+
     rafId = requestAnimationFrame(update);
 
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(rafId);
       window.removeEventListener('resize', resize);
       container.removeEventListener('mousemove', handleMouseMove);

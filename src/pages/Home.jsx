@@ -13,7 +13,7 @@ const Home = () => {
         <div className="w-full lg:w-[60%] relative z-10 flex flex-col justify-center">
           <div className="p-1 sm:p-4 lg:p-[1.5vw] xl:p-[2vw]">
             {/* Availability Status Badge with ticking dot */}
-            <div className="my-2 sm:my-4 lg:my-[0.8vw]">
+            <div className="my-2 mt-4 sm:my-4 lg:my-[0.8vw]">
               <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] sm:text-xs lg:text-[0.75vw] font-mono tracking-wide">
                 <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -27,25 +27,26 @@ const Home = () => {
               className="text-zinc-300 text-2xl sm:text-2xl lg:text-[2.2vw] font-semibold font-[font2] py-1 sm:py-3 lg:py-[1.5vw]"
             >
               Saptarshi Manna
+              <span className="sr-only"> — Full-Stack Developer &amp; Software Engineer</span>
             </h1>
 
             {/* Main Headline with responsive font size to fit screen perfectly */}
-            <div className="flex flex-col gap-2.5 sm:gap-6 lg:gap-[1.5vw] my-2 sm:my-4 lg:my-[1.2vw]">
-              <h2
-                className="text-zinc-100 text-[8.5vw] xs:text-4xl sm:text-6xl md:text-7xl lg:text-[5.4vw] xl:text-[5.8vw] font-black uppercase font-[font2] tracking-wide transform-[scaleY(1.35)] sm:transform-[scaleY(1.5)] lg:transform-[scaleY(1.7)] origin-left leading-[1.1] py-1 pt-4 sm:py-1"
+            <h2 className="flex flex-col gap-2.5 sm:gap-6 lg:gap-[1.5vw] my-2 sm:my-4 lg:my-[1.2vw]">
+              <span
+                className="text-zinc-100 text-[8.5vw] xs:text-4xl sm:text-6xl md:text-7xl lg:text-[5.4vw] xl:text-[5.8vw] font-black uppercase font-[font2] tracking-wide transform-[scaleY(1.35)] sm:transform-[scaleY(1.5)] lg:transform-[scaleY(1.7)] origin-left leading-[1.1] py-1 pt-4 sm:py-1 block"
               >
                 Crafting
-              </h2>
+              </span>
 
-              <h2
-                className="text-zinc-300/80 text-[6.8vw] xs:text-3xl sm:text-5xl md:text-6xl lg:text-[4.1vw] xl:text-[4.4vw] uppercase font-[font2] font-black tracking-wide origin-left scale-x-95 lg:scale-x-90 transform-[scaleY(1.35)] sm:transform-[scaleY(1.5)] lg:transform-[scaleY(1.7)] leading-[1.1] py-0.5 sm:py-1"
+              <span
+                className="text-zinc-300 text-[6.8vw] xs:text-3xl sm:text-5xl md:text-6xl lg:text-[4.1vw] xl:text-[4.4vw] uppercase font-[font2] font-black tracking-wide origin-left scale-x-95 lg:scale-x-90 transform-[scaleY(1.35)] sm:transform-[scaleY(1.5)] lg:transform-[scaleY(1.7)] leading-[1.1] py-0.5 sm:py-1 block"
               >
                 Experiences.
-              </h2>
-            </div>
+              </span>
+            </h2>
 
             <p
-              className="text-zinc-400 pr-4 py-4 sm:py-4 lg:py-[1.8vw] text-sm sm:text-base lg:text-[1.15vw] leading-relaxed font-[font1] mb-6 sm:mb-6 lg:mb-[2.5vw] max-w-xl"
+              className="text-zinc-300 pr-4 py-4 sm:py-4 lg:py-[1.8vw] text-sm sm:text-base lg:text-[1.15vw] leading-relaxed font-[font1] mb-6 sm:mb-6 lg:mb-[2.5vw] max-w-xl"
             >
               Software Engineering student and Full-Stack Developer passionate
               about building scalable web applications, solving complex
@@ -96,22 +97,25 @@ const Home = () => {
               />
             </div>
 
-            {/* Profile image with circular mask comfortably inside the ring */}
-            <img
-              className="relative z-10 w-[84%] h-[84%] sm:w-[80%] sm:h-[80%] p-1 sm:p-2 lg:p-[0.8vw] grayscale-[75] brightness-80 opacity-80 contrast-130 object-cover select-none pointer-events-none rounded-full"
-              style={{
-                WebkitMaskImage:
-                  "radial-gradient(circle, black 62%, transparent 70%)",
-                maskImage:
-                  "radial-gradient(circle, black 62%, transparent 70%)",
-              }}
-              src="/profile pic.png"
-              alt="Saptarshi Manna - Full-Stack Developer"
-              width="530"
-              height="530"
-              loading="eager"
-              fetchpriority="high"
-            />
+            {/* Profile image with circular mask comfortably inside the ring (AVIF with PNG fallback) */}
+            <picture className="relative z-10 w-[84%] h-[84%] sm:w-[80%] sm:h-[80%] flex items-center justify-center">
+              <source type="image/avif" srcSet="/profile-pic.avif" />
+              <img
+                className="w-full h-full p-1 sm:p-2 lg:p-[0.8vw] grayscale-[75] brightness-80 opacity-80 contrast-130 object-cover select-none pointer-events-none rounded-full"
+                style={{
+                  WebkitMaskImage:
+                    "radial-gradient(circle, black 62%, transparent 70%)",
+                  maskImage:
+                    "radial-gradient(circle, black 62%, transparent 70%)",
+                }}
+                src="/profile-pic.png"
+                alt="Saptarshi Manna - Full-Stack Developer"
+                width="530"
+                height="530"
+                loading="eager"
+                fetchPriority="high"
+              />
+            </picture>
           </div>
         </div>
       </div>

@@ -56,6 +56,20 @@ const SkillsFooter = () => {
       ease: "none",
       repeat: -1,
     });
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        tween.current?.play();
+      } else {
+        tween.current?.pause();
+      }
+    });
+
+    if (trackRef.current) {
+      observer.observe(trackRef.current);
+    }
+
+    return () => observer.disconnect();
   });
 
   return (

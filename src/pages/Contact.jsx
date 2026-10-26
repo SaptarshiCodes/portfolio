@@ -36,20 +36,20 @@ const Contact = () => {
               className="font-[font2] font-bold text-3xl sm:text-5xl lg:text-[5vw] tracking-tight leading-[1.05]"
             >
               <span className="text-zinc-100 block">Let's Work</span>
-              <span className="text-zinc-500 block">Together.</span>
+              <span className="text-zinc-400 block">Together.</span>
             </div>
 
             {/* Narrative Description */}
             <p
               data-scroll-reveal
-              className="text-zinc-400 text-sm sm:text-base lg:text-[1.25vw] leading-relaxed font-[font1] max-w-lg"
+              className="text-zinc-300 text-sm sm:text-base lg:text-[1.25vw] leading-relaxed font-[font1] max-w-lg"
             >
               Crafting digital experiences that leave a lasting impression. Available for freelance projects, technical collaborations, and full-time engineering roles.
             </p>
 
             {/* Social Links on Desktop */}
             <div data-scroll-reveal className="hidden lg:block pt-[2vw]">
-              <p className="text-xs lg:text-[0.75vw] uppercase font-mono tracking-widest text-zinc-500 mb-3">
+              <p className="text-xs lg:text-[0.75vw] uppercase font-mono tracking-widest text-zinc-400 mb-3">
                 Connect on social
               </p>
               <SocialLinks />
@@ -64,7 +64,7 @@ const Contact = () => {
 
             {/* Social Links on Mobile */}
             <div data-scroll-reveal className="block lg:hidden pt-2">
-              <p className="text-xs uppercase font-mono tracking-wider text-zinc-500 mb-3">
+              <p className="text-xs uppercase font-mono tracking-wider text-zinc-400 mb-3">
                 Connect on social
               </p>
               <SocialLinks />
@@ -76,7 +76,7 @@ const Contact = () => {
       <div>
         <div className="h-px w-full bg-zinc-800 my-4 lg:my-[1vw]"></div>
 
-        <footer className="text-zinc-400 font-normal text-xs sm:text-sm lg:text-[1vw] py-4 flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-2">
+        <footer className="text-zinc-300 font-normal text-xs sm:text-sm lg:text-[1vw] py-4 flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-2">
           <p>© {new Date().getFullYear()} Saptarshi Manna. All rights reserved.</p>
           <p>Designed &amp; Built with passion.</p>
         </footer>
