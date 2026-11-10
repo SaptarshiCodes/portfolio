@@ -23,39 +23,32 @@ const Home = () => {
               </div>
             </div>
 
-            <h1
-              className="text-zinc-300 text-2xl sm:text-2xl lg:text-[2.2vw] font-semibold font-[font2] py-1 sm:py-3 lg:py-[1.5vw]"
-            >
+            <h1 className="text-zinc-300 text-2xl sm:text-2xl lg:text-[2.2vw] font-semibold font-[font2] py-1 sm:py-3 lg:py-[1.5vw]">
               Saptarshi Manna
-              <span className="sr-only"> — Full-Stack Developer &amp; Software Engineer</span>
+              <span className="sr-only">
+                {" "}
+                — Full-Stack Developer &amp; Software Engineer
+              </span>
             </h1>
 
             {/* Main Headline with responsive font size to fit screen perfectly */}
             <h2 className="flex flex-col gap-2.5 sm:gap-6 lg:gap-[1.5vw] my-2 sm:my-4 lg:my-[1.2vw]">
-              <span
-                className="text-zinc-100 text-[8.5vw] xs:text-4xl sm:text-6xl md:text-7xl lg:text-[5.4vw] xl:text-[5.8vw] font-black uppercase font-[font2] tracking-wide transform-[scaleY(1.35)] sm:transform-[scaleY(1.5)] lg:transform-[scaleY(1.7)] origin-left leading-[1.1] py-1 pt-4 sm:py-1 block"
-              >
+              <span className="text-zinc-100 text-[8.5vw] xs:text-4xl sm:text-6xl md:text-7xl lg:text-[5.4vw] xl:text-[5.8vw] font-black uppercase font-[font2] tracking-wide transform-[scaleY(1.35)] sm:transform-[scaleY(1.5)] lg:transform-[scaleY(1.7)] origin-left leading-[1.1] py-1 pt-4 sm:py-1 block">
                 Crafting
               </span>
 
-              <span
-                className="text-zinc-300 text-[6.8vw] xs:text-3xl sm:text-5xl md:text-6xl lg:text-[4.1vw] xl:text-[4.4vw] uppercase font-[font2] font-black tracking-wide origin-left scale-x-95 lg:scale-x-90 transform-[scaleY(1.35)] sm:transform-[scaleY(1.5)] lg:transform-[scaleY(1.7)] leading-[1.1] py-0.5 sm:py-1 block"
-              >
+              <span className="text-zinc-300 text-[6.8vw] xs:text-3xl sm:text-5xl md:text-6xl lg:text-[4.1vw] xl:text-[4.4vw] uppercase font-[font2] font-black tracking-wide origin-left scale-x-95 lg:scale-x-90 transform-[scaleY(1.35)] sm:transform-[scaleY(1.5)] lg:transform-[scaleY(1.7)] leading-[1.1] py-0.5 sm:py-1 block">
                 Experiences.
               </span>
             </h2>
 
-            <p
-              className="text-zinc-300 pr-4 py-4 sm:py-4 lg:py-[1.8vw] text-sm sm:text-base lg:text-[1.15vw] leading-relaxed font-[font1] mb-6 sm:mb-6 lg:mb-[2.5vw] max-w-xl"
-            >
+            <p className="text-zinc-300 pr-4 py-4 sm:py-4 lg:py-[1.8vw] text-sm sm:text-base lg:text-[1.15vw] leading-relaxed font-[font1] mb-6 sm:mb-6 lg:mb-[2.5vw] max-w-xl">
               Software Engineering student and Full-Stack Developer passionate
               about building scalable web applications, solving complex
               problems, and creating engaging digital experiences.
             </p>
 
-            <div
-              className="font-[font2] text-xs sm:text-sm lg:text-[1.3vw] flex flex-wrap items-center gap-2.5 sm:gap-4 lg:gap-[2vw]"
-            >
+            <div className="font-[font2] text-xs sm:text-sm lg:text-[1.3vw] flex flex-wrap items-center gap-2.5 sm:gap-4 lg:gap-[2vw]">
               <a
                 href="#work"
                 onClick={(e) => {
@@ -71,7 +64,7 @@ const Home = () => {
               </a>
 
               <a
-                href="/Saptarshi CV.pdf"
+                href="/Saptarshi_Manna_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-300 border-zinc-400 border-[0.15vw] px-4 py-2 sm:px-8 sm:py-3 lg:px-[2vw] lg:py-[0.6vw] font-semibold leading-loose rounded-full hover:border-zinc-100 hover:text-zinc-100 flex items-center justify-center transition-all duration-300 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none"

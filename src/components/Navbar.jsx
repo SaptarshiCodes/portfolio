@@ -73,7 +73,7 @@ export const Navbar = () => {
         <div className="h-px bg-white/10 my-1" />
 
         <a
-          href="/Saptarshi CV.pdf"
+          href="/Saptarshi_Manna_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setMobileOpen(false)}
@@ -225,7 +225,7 @@ const Tab = ({ children, setPosition, targetId, isResume, tabRef }) => {
 
   const handleClick = () => {
     if (isResume) {
-      window.open("/Saptarshi CV.pdf", "_blank", "noopener,noreferrer");
+      window.open("/Saptarshi_Manna_Resume.pdf", "_blank", "noopener,noreferrer");
     } else if (targetId) {
       const element = document.getElementById(targetId);
       if (element) {
